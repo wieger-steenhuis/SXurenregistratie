@@ -1,23 +1,16 @@
 package nl.Programit.urenregistratieGUI;
 
 
+import javafx.application.*;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.*;
+import javafx.scene.text.*;
+import javafx.stage.*;
 import nl.Programit.urenregistratieGUI.FXComponents.*;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import nl.Programit.urenregistratieModel1.AdminOperator;
-import nl.Programit.urenregistratieModel1.Person;
-import nl.Programit.urenregistratieModel1.Trainer;
+import nl.Programit.urenregistratieModel1.*;
 
 public class Main extends Application {
 
@@ -58,13 +51,19 @@ public class Main extends Application {
                  if ( (pincodeField.getLength()==4) && !(thisPerson==null) ) {
                      if ((thisPerson instanceof Trainer)) {
                          pincodeField.clear();
-                         message.setText("U word door verwezen naar het volgende scherm");
+                         message.setText("Hallo "+thisPerson.getFirstName()+"\nU word door verwezen naar het volgende scherm");
                          message.setStyle("-fx-font: bold 18px Calibri; -fx-fill: green");
-
                      }
-
-                    message.setText("U word door verwezen naar het volgende scherm");
-                    message.setStyle("-fx-font: bold 18px Calibri; -fx-fill: green");
+                     else if ((thisPerson instanceof Administrator)) {
+                         pincodeField.clear();
+                         message.setText("Hallo "+thisPerson.getFirstName()+"\nU word door verwezen naar het volgende scherm");
+                         message.setStyle("-fx-font: bold 18px Calibri; -fx-fill: green");
+                     }
+                     else if ((thisPerson instanceof Customer)) {
+                         pincodeField.clear();
+                         message.setText("Hallo "+thisPerson.getFirstName()+"\nU word door verwezen naar het volgende scherm");
+                         message.setStyle("-fx-font: bold 18px Calibri; -fx-fill: green");
+                     }
                 }else {
                     message.setText("Uw LoginCode is onjuist!\n voer nogmaals uw code in");
                     message.setStyle("-fx-font: bold 18px Calibri;-fx-fill: crimson");
@@ -104,7 +103,7 @@ public class Main extends Application {
 
         //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("ProgramIT - SX_Sport");
-        primaryStage.setScene(new Scene(loginFullbox, 300, 275));
+        primaryStage.setScene(new Scene(loginFullbox, 500, 475));
         primaryStage.show();
     }
 

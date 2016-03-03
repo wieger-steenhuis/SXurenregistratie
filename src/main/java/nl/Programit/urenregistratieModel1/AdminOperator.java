@@ -9,11 +9,29 @@ import java.util.ArrayList;
 public class AdminOperator {
 
     //Singelton class to ensure single instance
-
     private static AdminOperator instance;
     synchronized public static AdminOperator getInstance(){
         if (instance == null)
             instance = new AdminOperator();
+
+        Person baddi = new Administrator();
+        baddi.setPin(8888);
+        baddi.setFirstName("Baddi");
+
+
+        Person wieger = new Trainer();
+        wieger.setPin(5555);
+        wieger.setFirstName("Wieger");
+
+
+        Person mark = new Customer();
+        mark.setPin(1824);
+        mark.setFirstName("Mark");
+
+
+        instance.persons.add(baddi);
+        instance.persons.add(wieger);
+        instance.persons.add(mark);
         return instance;
     }
 
@@ -23,12 +41,42 @@ public class AdminOperator {
     private Administrator administrator;
     private Subscription subscription;
 
-
     private ArrayList <Customer> customers =new ArrayList<>();
     private ArrayList <Trainer> trainers =new ArrayList<>();
     private ArrayList <Subscription> subscriptions =new ArrayList<>();
     public  ArrayList <Person> persons = new ArrayList<>();
 
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Administrator getAdministrator() {
+        return administrator;
+    }
+
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
+    }
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
+    }
 
     public  Person checkPin(int pin){
         for (Person p : persons) {

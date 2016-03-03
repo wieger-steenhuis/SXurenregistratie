@@ -4,12 +4,23 @@ import java.util.ArrayList;
 
 /**
  * Created by ProgramIT on 2-3-2016.
+ *
  */
 public class AdminOperator {
 
+    //Singelton class to ensure single instance
+
+    private static AdminOperator instance;
+    synchronized public static AdminOperator getInstance(){
+        if (instance == null)
+            instance = new AdminOperator();
+        return instance;
+    }
+
+
     private Trainer trainer;
     private Customer customer;
-    private nl.Programit.urenregistratieModel1.Administrator administrator;
+    private Administrator administrator;
     private Subscription subscription;
 
 

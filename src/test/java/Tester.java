@@ -6,26 +6,30 @@ import nl.Programit.urenregistratieModel1.*;
 public class Tester {
 
     public static void main(String[] args) {
-        Person baddi = new Administrator();
-        baddi.setPin(8888);
-        baddi.setFirstName("Baddi");
+        //create persons (Customer, Trainer and Administrator):
+        AdminOperator instance = AdminOperator.getInstance();
 
+        instance.checkPin(1824);
+        System.out.println("ID: "+instance.getCustomer().getCustumerID()+" Naam: "+instance.getCustomer().getFirstName());
 
-        Person wieger = new Trainer();
-        wieger.setPin(5555);
-        wieger.setFirstName("Wieger");
+        instance.checkPin(8888);
+        System.out.println("ID: "+instance.getAdministrator().getAdministratorID()+" Naam: "+instance.getAdministrator().getFirstName());
 
+        instance.checkPin(5555);
+        System.out.println("ID: "+instance.getTrainer().getEmployeeId()+" Naam: "+instance.getTrainer().getFirstName());
 
-        Person mark = new Customer();
-        mark.setPin(1824);
-        mark.setFirstName("Mark");
+        //create 'Database' (txt file):
+        DataPersister dPinstance = DataPersister.getInstance();
 
-        AdminOperator a = new AdminOperator();
-        a.persons.add(baddi);
-        a.persons.add(wieger);
-        a.persons.add(mark);
-        System.out.println(a.checkPin(1824));
-        System.out.println(a.checkPin(8888));
+        //create etries:
+        dPinstance.createEntry(instance.getTrainer());
+        dPinstance.createEntry(instance.getAdministrator());
+        dPinstance.createEntry(instance.getCustomer());
+
+        //retrieve entries:
+        System.out.println((dPinstance.retrieveEntry(instance.getCustomer())).getPin());
+        System.out.println(((Customer)dPinstance.retrieveEntry(instance.getCustomer())).getCustumerID());
+        System.out.println((dPinstance.retrieveEntry(instance.getAdministrator())).getPin());
 
     }
 }

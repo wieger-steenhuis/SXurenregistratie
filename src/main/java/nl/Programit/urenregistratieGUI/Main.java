@@ -18,7 +18,6 @@ public class Main extends Application {
     Text message = new Text();
 
 
-
     @Override
     public void start(Stage primaryStage) throws Exception{
 

@@ -8,12 +8,23 @@ import java.util.ArrayList;
  */
 public class AdminOperator {
 
+    private Trainer trainer;
+    private Customer customer;
+    private Administrator administrator;
+    private Subscription subscription;
+
+    public  ArrayList <Person> persons = new ArrayList<>();
+
     //Singelton class to ensure single instance
     private static AdminOperator instance;
     synchronized public static AdminOperator getInstance(){
-        if (instance == null)
+        if (instance == null) {
             instance = new AdminOperator();
+        }
+        return instance;
+    }
 
+    private AdminOperator(){
         Administrator baddi = new Administrator();
         baddi.setPin(8888);
         baddi.setFirstName("Baddi");
@@ -32,22 +43,54 @@ public class AdminOperator {
         mark.setCustumerID(3);
 
 
-        instance.persons.add(baddi);
-        instance.persons.add(wieger);
-        instance.persons.add(mark);
-        return instance;
+        this.persons.add(baddi);
+        this.persons.add(wieger);
+        this.persons.add(mark);
     }
 
 
-    private Trainer trainer;
-    private Customer customer;
-    private Administrator administrator;
-    private Subscription subscription;
+    public  Person checkPin(int pin){
+        for (Person p : persons) {
+            if (pin == p.getPin()) {
+                if (p instanceof Trainer) setTrainer((Trainer) p);
+                else if (p instanceof Administrator) setAdministrator((Administrator) p);
+                else if (p instanceof Customer) setCustomer((Customer) p);
+                return p;
+            }
+        }
+        return null;
+    }
 
-    private ArrayList <Customer> customers =new ArrayList<>();
-    private ArrayList <Trainer> trainers =new ArrayList<>();
-    private ArrayList <Subscription> subscriptions =new ArrayList<>();
-    public  ArrayList <Person> persons = new ArrayList<>();
+    public Trainer searchTrainer (int employeeId){
+        for(Person p: persons){
+            if (p instanceof Trainer) {
+                if (((Trainer) p).getEmployeeId() == employeeId)
+                    return (Trainer) p;
+            }
+        }
+        return null;
+    }
+
+    public Customer searchCustomer (int custumerID){
+        for(Person p: persons) {
+            if (p instanceof Customer) {
+                if (((Customer) p).getCustumerID() == custumerID)
+                    return (Customer) p;
+            }
+        }
+        return null;
+    }
+
+    public Administrator searchAdministrator (int administratorID){
+        for(Person p: persons) {
+            if (p instanceof Administrator) {
+                if (((Administrator) p).getAdministratorID() == administratorID)
+                    return (Administrator) p;
+            }
+        }
+        return null;
+    }
+
 
     public Trainer getTrainer() {
         return trainer;
@@ -81,37 +124,8 @@ public class AdminOperator {
         this.subscription = subscription;
     }
 
-    public  Person checkPin(int pin){
-        for (Person p : persons) {
-            if (pin == p.getPin()) {
-                if (p instanceof Trainer) this.trainer = (Trainer) p;
-                else if (p instanceof Administrator) this.administrator = (Administrator) p;
-                else if (p instanceof Customer) this.customer = (Customer) p;
-                return p;
-            }
-        }
-        return null;
-    }
 
-
-    public Trainer searchTrainer (int employeeId){
-        for(Trainer t: trainers){
-            if (t.getEmployeeId() == employeeId)
-                return t;
-        }
-        return null;
-    }
-
-    public Customer searchCustomer (int custumerID){
-        for(Customer c: customers){
-            if (c.getCustumerID() == custumerID)
-                return c;
-        }
-        return null;
-    }
-
-
-    public Subscription searchSubscription (int subscriptionID){
+    /*public Subscription searchSubscription (int subscriptionID){
         for(Subscription a: subscriptions){
             if (a.getSubscriptionID() == subscriptionID)
                 return a;
@@ -119,8 +133,7 @@ public class AdminOperator {
         return null;
     }
 
-
-    /*public void sessieAfvinken (SportSessie s){
+    public void sessieAfvinken (SportSessie s){
         (searchKlant(s.getKlant()).getMySubscription()).decreaseSessionsCredit(VINK); // ga ervan uit dat er nog sessies over zijn
         (searchTrainer(s.getTrainer())).incrementApprovedSessions(VINK);
         s.setBevestigd(true);

@@ -1,8 +1,5 @@
 import nl.Programit.urenregistratieModel1.*;
 
-/**
- * Created by ProgramIT on 2-3-2016.
- */
 public class Tester {
 
     public static void main(String[] args) {

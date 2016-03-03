@@ -11,16 +11,13 @@ import nl.Programit.urenregistratieModel1.*;
  */
 public class TrainerScene {
 
-    public static Scene getScene(Person person) {
-        Person thisPerson = person;
-        Text welkomText = new Text("Welkom "+ thisPerson.getFirstName());
+    public static Scene getTrainerScene(Person person) {
+
+        Trainer trainer = (Trainer)person;
+        Text welkomText = new Text("Welkom trainer " + trainer.getFirstName());
         VBox elements = new VBox(welkomText);
         Scene trainerScene = new Scene(elements);
         return trainerScene;
     }
-
-
-
-
 
 }

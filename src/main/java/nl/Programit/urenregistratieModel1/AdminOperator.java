@@ -14,19 +14,22 @@ public class AdminOperator {
         if (instance == null)
             instance = new AdminOperator();
 
-        Person baddi = new Administrator();
+        Administrator baddi = new Administrator();
         baddi.setPin(8888);
         baddi.setFirstName("Baddi");
+        baddi.setAdministratorID(1);
 
 
-        Person wieger = new Trainer();
+        Trainer wieger = new Trainer();
         wieger.setPin(5555);
         wieger.setFirstName("Wieger");
+        wieger.setEmployeeId(2);
 
 
-        Person mark = new Customer();
+        Customer mark = new Customer();
         mark.setPin(1824);
         mark.setFirstName("Mark");
+        mark.setCustumerID(3);
 
 
         instance.persons.add(baddi);

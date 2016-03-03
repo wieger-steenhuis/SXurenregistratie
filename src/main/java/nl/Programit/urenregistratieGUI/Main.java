@@ -14,13 +14,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        primaryStage = window;
-        
-        primaryStage.setTitle("ProgramIT - SX_Sport");
+        //primaryStage = window;
 
-        primaryStage.setScene(LoginScene.getLoginScene(window));
-        primaryStage.setMaximized(true);
-        primaryStage.show();
+        window.setTitle("ProgramIT - SX_Sport");
+
+        window.setScene(LoginScene.getLoginScene(window));
+        window.setMaximized(true);
+        window.show();
     }
 
 

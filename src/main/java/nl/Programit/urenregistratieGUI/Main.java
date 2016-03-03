@@ -54,7 +54,7 @@ public class Main extends Application {
 
         enterButton.setOnAction(event -> {
             int pincodenr = Integer.parseInt(pincodeField.getText());
-                Person thisPerson = AdminOperator.checkPin(pincodenr);
+                Person thisPerson = AdminOperator.getInstance().checkPin(pincodenr);
                  if ( (pincodeField.getLength()==4) && !(thisPerson==null) ) {
                      if ((thisPerson instanceof Trainer)) {
                          pincodeField.clear();

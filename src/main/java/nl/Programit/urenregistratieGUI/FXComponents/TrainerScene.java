@@ -11,6 +11,7 @@ import nl.Programit.urenregistratieModel1.*;
 public class TrainerScene {
 
     public static Scene getScene(Person person) {
+
         Person thisPerson = person;
         Text welkomText = new Text("Welkom "+ thisPerson.getFirstName());
         VBox elements = new VBox(welkomText);

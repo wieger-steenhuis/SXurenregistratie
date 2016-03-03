@@ -19,7 +19,7 @@ public class AdminOperator {
     public  ArrayList <Person> persons = new ArrayList<>();
 
 
-    public Person checkPin(int pin){
+    public  Person checkPin(int pin){
         for (Person p : persons) {
             if (pin == p.getPin()) {
                 if (p instanceof Trainer) this.trainer = (Trainer) p;

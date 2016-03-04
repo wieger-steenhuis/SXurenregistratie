@@ -75,9 +75,11 @@ public class AdminOperator {
     }
 
     public  Person checkPin(int pin) {
-        Person p;
-        p = DataPersister.getInstance().retrieveEntry(pin);
-        return p;
+        Person p = DataPersister.getInstance().retrieveEntry(pin);
+        if (p instanceof Administrator) return (Administrator)p;
+        if (p instanceof Customer) return (Customer)p;
+        if (p instanceof Trainer) return (Trainer)p;
+        else return null;
     }
     /*
 

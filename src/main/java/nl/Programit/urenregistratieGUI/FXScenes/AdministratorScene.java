@@ -94,11 +94,11 @@ public class AdministratorScene {
 
     private static Person getPType() {
         if (type == 1)
-            return new Administrator();
-        else if (type == 2)
             return new Customer();
-        else if (type == 3)
+        else if (type == 2)
             return new Trainer();
+        else if (type == 3)
+            return new Administrator();
         else return null;
     }
 

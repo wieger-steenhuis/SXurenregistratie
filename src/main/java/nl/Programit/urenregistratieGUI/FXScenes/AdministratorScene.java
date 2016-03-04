@@ -56,7 +56,7 @@ public class AdministratorScene {
 
             thisPerson.setPin(Integer.parseInt(pin.getText()));
             thisPerson.setFirstName(firstName.getText());
-            //thisPerson.setAdministratorID(Integer.parseInt(idNr.getText()));
+            //thisPerson.setID(Integer.parseInt(idNr.getText()));  //dit werkt niet
 
             dPinstance.createEntry(thisPerson);
             dPinstance.getInstance().createEntry(thisPerson);

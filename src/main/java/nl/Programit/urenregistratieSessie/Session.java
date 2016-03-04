@@ -1,5 +1,6 @@
-package test;
+package nl.Programit.urenregistratieSessie;
 
+import nl.Programit.urenregistratieModel1.*;
 import java.util.Date;
 
 public class Session {
@@ -17,6 +18,18 @@ public class Session {
 		sessionsAmount++;
 		this.sessionId = sessionsAmount;
 	}
+
+	//TODO deze method stond voorheen in customer... herschrijven naar session
+	/*public boolean verifySession(String pinCode, Session session){
+		if(this.pinCode == pinCode){
+			decreaseCredits();
+			session.getTrainer().increaseExecutedSessions(session);;
+			return true;
+		}else{
+			return false;
+		}
+	}*/
+
 	
 	@Override
 	public String toString() {

@@ -1,9 +1,10 @@
 
-package test;
+package nl.Programit.urenregistratieSessie;
 import java.util.Date;
 import java.util.List;
+import nl.Programit.urenregistratieModel1.*;
 
-public class Gym implements SessionManageable {
+public class GymSession implements SessionManageable {
 	private String name;
 	private String email;
 	

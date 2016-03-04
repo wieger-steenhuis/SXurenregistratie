@@ -10,6 +10,4 @@ public class Administrator extends Person {
     public void setAdministratorID(int administratorID) {
         this.administratorID = administratorID;
     }
-
-
 }

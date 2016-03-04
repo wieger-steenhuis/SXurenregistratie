@@ -1,13 +1,7 @@
-package test;
+package nl.Programit.urenregistratieSessie;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.text.*;
+import java.util.*;
 
 public class TestProgram {
 
@@ -52,6 +46,8 @@ public class TestProgram {
 		}
 		// Date dateTraining = new Date(2016,01,12); //vaste datum Hoe invoeren in scanner??
 
+		//TODO opnieuw definieren met andere customer / person / administrator / trainer classes
+		/*
 		Customer customer = new Customer(1, nameClient, "3234");
 		customer.setCredits(creditsCustomer); // Klant heeft nu 10 credits!!
 
@@ -70,7 +66,7 @@ public class TestProgram {
 			System.out.println("Klant " + customer.getName() + " heeft nu " + customer.getCredits() +
 					" Credits." + " Trainer " + trainer.getName() + " heeft nu " + trainer.getExecutedSessions() + " credits");
 
-		}
+		}*/
 
 	}
 }

@@ -9,7 +9,21 @@ public abstract class Person {
 	private java.util.Date birthDay;
 	private String bankAccountID;
 	private int pin;
+	private String emailAddress;
+	private String gender;
 
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public int getPin() {
 		return pin;
 	}

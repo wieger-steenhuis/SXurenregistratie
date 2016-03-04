@@ -1,5 +1,7 @@
-package test;
-import java.util.Date;
+package nl.Programit.urenregistratieSessie;
+import nl.Programit.urenregistratieModel1.*;
+
+import java.util.*;
 
 public interface SessionManageable {
 	Session createSession();

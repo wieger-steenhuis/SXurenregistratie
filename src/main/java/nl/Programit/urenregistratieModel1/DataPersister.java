@@ -1,7 +1,9 @@
 package nl.Programit.urenregistratieModel1;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //CRUD Operations to persist data (uses database.txt for testing purposes)
 public class DataPersister {
@@ -36,11 +38,11 @@ public class DataPersister {
         String input;
         try {
             if (p instanceof Trainer) {
-                input = "$<<TRAINERID>>" + ((Trainer) p).getEmployeeId() + "<<naam>>" + ((Trainer) p).getFirstName() + "<<pin>>" + ((Trainer) p).getPin()+"#\n";
+                input = "$tID>>" + ((Trainer) p).getEmployeeId() + "nam>>" + ((Trainer) p).getFirstName() + "pin>>" + ((Trainer) p).getPin()+"#\n";
             } else if (p instanceof Customer) {
-                input = "$<<CUSTID>>" + ((Customer) p).getCustumerID() + "<<naam>>" + ((Customer) p).getFirstName() + "<<pin>>"+ ((Customer) p).getPin()+"#\n";
+                input = "$cID>>" + ((Customer) p).getCustumerID() + "nam>>" + ((Customer) p).getFirstName() + "pin>>"+ ((Customer) p).getPin()+"#\n";
             } else if (p instanceof Administrator) {
-                input = "$<<ADMIND>>" + ((Administrator) p).getAdministratorID() + "<<naam>>" + ((Administrator) p).getFirstName() + "<<pin>>" + ((Administrator) p).getPin()+"#\n";
+                input = "$aID>>" + ((Administrator) p).getAdministratorID() + "nam>>" + ((Administrator) p).getFirstName() + "pin>>" + ((Administrator) p).getPin()+"#\n";
             } else return;
 
             FileOutputStream out = new FileOutputStream(file, true); //boolean to append test in file
@@ -48,6 +50,57 @@ public class DataPersister {
             dos.writeUTF(input);
         }
         catch (IOException e){}
+    }
+
+    public Person retrieveEntry(int pin){
+        Person retrieved;
+        String output = new String();
+
+        try{
+            FileInputStream in = new FileInputStream(file);
+            DataInputStream din = new DataInputStream(in);
+            while (true) {
+                output += din.readUTF();
+            }
+        }
+        catch (IOException e) {}
+
+        ArrayList<String> inputLines = new ArrayList<>();
+
+        String tempOutput = output;
+
+        while (tempOutput != null){
+            if (tempOutput.lastIndexOf('#') != -1){
+                inputLines.add(tempOutput.substring((tempOutput.lastIndexOf('$')),tempOutput.length()-1));
+                tempOutput = tempOutput.substring(0,tempOutput.lastIndexOf('$'));
+            }
+            else tempOutput = null;
+        }
+        for (String inputLine : inputLines){
+            //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
+            if (inputLine.charAt(1)=='c' && Integer.parseInt(databaseToString(inputLine, "pin>>", "#"))==pin){
+                retrieved = new Customer();
+                databaseToString(inputLine, "ID>>", "nam>>");
+                retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
+                return retrieved;
+            }
+            else if (inputLine.charAt(1)=='a' && Integer.parseInt(databaseToString(inputLine, "pin>>", "#"))==pin){
+                retrieved = new Administrator();
+                databaseToString(inputLine, "ID>>", "nam>>");
+                retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
+                return retrieved;
+            }
+            else if (inputLine.charAt(1)=='t'&& Integer.parseInt(databaseToString(inputLine, "pin>>", "#"))==pin){
+                retrieved = new Trainer();
+                databaseToString(inputLine, "ID>>", "nam>>");
+                retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
+                return retrieved;
+            }
+        }
+        return null;
     }
 
     public Person retrieveEntry(Person p){
@@ -72,38 +125,52 @@ public class DataPersister {
                 inputLines.add(tempOutput.substring((tempOutput.lastIndexOf('$')),tempOutput.length()-1));
                 tempOutput = tempOutput.substring(0,tempOutput.lastIndexOf('$'));
             }
-
             else tempOutput = null;
         }
         for (String inputLine : inputLines){
             //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
-            if (inputLine.charAt(3)=='C'){
+            if (inputLine.charAt(1)=='c'){
                 retrieved = new Customer();
-                retrieved.setPin(Integer.parseInt(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5)));
-                ((Customer)retrieved).setCustumerID(Integer.parseInt(inputLine.substring(inputLine.indexOf('>')+2,inputLine.indexOf('>')+3)));
-                //((Customer)retrieved).setFirstName(inputLine.substring(inputLine.indexOf('<'),(inputLine.substring(inputLine.indexOf('>')+2)).indexOf('<')));
+                databaseToString(inputLine, "ID>>", "nam>>");
+                retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
                 return retrieved;
             }
-            if (inputLine.charAt(3)=='A'){
+            else if (inputLine.charAt(1)=='a'){
                 retrieved = new Administrator();
-                retrieved.setPin(Integer.parseInt(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5)));
-                ((Administrator)retrieved).setAdministratorID(Integer.parseInt(inputLine.substring(inputLine.indexOf('>')+2,inputLine.indexOf('>')+3)));
-                retrieved.setFirstName("BBBBBB");
+                databaseToString(inputLine, "ID>>", "nam>>");
+                retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
                 return retrieved;
             }
-            if (inputLine.charAt(3)=='T'){
+            else if (inputLine.charAt(1)=='t'){
                 retrieved = new Trainer();
-                retrieved.setPin(Integer.parseInt(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5)));
-                ((Trainer)retrieved).setEmployeeId(Integer.parseInt(inputLine.substring(inputLine.indexOf('>')+2,inputLine.indexOf('>')+3)));
-                retrieved.setFirstName("CCCCCC");
+                databaseToString(inputLine, "ID>>", "nam>>");
+                retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
                 return retrieved;
             }
-            else
-
-                return null;
-
         }
         return null;
     }
+
+    public String databaseToString (String inputLine, String regex1, String regex2){
+        int start;
+        int end;
+        Pattern pattern = Pattern.compile(regex1);
+        Matcher matcher =pattern.matcher(inputLine);
+        if (matcher.find()) {
+            start = matcher.end();
+        }
+        else return null;
+        pattern  = Pattern.compile(regex2);
+        matcher =pattern.matcher(inputLine);
+        if (matcher.find()) {
+            end = matcher.start();
+        }
+        else return null;
+        return inputLine.substring(start, end);
+    }
+
 }
 

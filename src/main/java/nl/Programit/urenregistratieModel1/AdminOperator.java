@@ -1,7 +1,5 @@
 package nl.Programit.urenregistratieModel1;
 
-import java.util.ArrayList;
-
 /**
  * Created by ProgramIT on 2-3-2016.
  *
@@ -13,8 +11,6 @@ public class AdminOperator {
     private Administrator administrator;
     private Subscription subscription;
 
-    public  ArrayList <Person> persons = new ArrayList<>();
-
     //Singelton class to ensure single instance
     private static AdminOperator instance;
     synchronized public static AdminOperator getInstance(){
@@ -24,32 +20,14 @@ public class AdminOperator {
         return instance;
     }
 
-    private AdminOperator(){
-        Administrator baddi = new Administrator();
-        baddi.setPin(8888);
-        baddi.setFirstName("Baddi");
-        baddi.setAdministratorID(1);
 
-
-        Trainer wieger = new Trainer();
-        wieger.setPin(5555);
-        wieger.setFirstName("Wieger");
-        wieger.setEmployeeId(2);
-
-
-        Customer mark = new Customer();
-        mark.setPin(1824);
-        mark.setFirstName("Mark");
-        mark.setCustumerID(3);
-
-
-        this.persons.add(baddi);
-        this.persons.add(wieger);
-        this.persons.add(mark);
+    public  Person checkPin(int pin) {
+        Person p;
+        p = DataPersister.getInstance().retrieveEntry(pin);
+        return p;
     }
+    /*
 
-
-    public  Person checkPin(int pin){
         for (Person p : persons) {
             if (pin == p.getPin()) {
                 if (p instanceof Trainer) setTrainer((Trainer) p);
@@ -91,7 +69,7 @@ public class AdminOperator {
         return null;
     }
 
-
+*/
     public Trainer getTrainer() {
         return trainer;
     }

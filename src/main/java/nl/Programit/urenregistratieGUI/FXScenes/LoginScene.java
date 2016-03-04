@@ -1,15 +1,16 @@
-package nl.Programit.urenregistratieGUI.FXComponents;
+package nl.Programit.urenregistratieGUI.FXScenes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
+import nl.Programit.urenregistratieGUI.FXComponents.MyPasswordField;
+import nl.Programit.urenregistratieGUI.FXComponents.NumberButton;
 import nl.Programit.urenregistratieModel1.*;
 
 /**
@@ -25,7 +26,7 @@ public class LoginScene {
         double  hight = window.getHeight();
 
         Text message = new Text();
-        PasswordField pincodeField = new PasswordField();
+        MyPasswordField pincodeField = new MyPasswordField("Pincode");
 
         VBox loginFullbox = new VBox();
         loginFullbox.setAlignment(Pos.CENTER);

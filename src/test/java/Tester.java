@@ -52,6 +52,7 @@ public class Tester {
 
         System.out.println(dPinstance.retrieveEntry(instance.getAdministrator()).getPin());
         System.out.println(dPinstance.retrieveEntry(instance.getAdministrator()).getFirstName());
+        instance.printEntry((dPinstance.retrieveEntry(baddi)));
         //System.out.println((dPinstance.retrieveEntry(instance.getAdministrator())).getPin());
 
     }

@@ -22,14 +22,18 @@ public class Tester {
         mark.setCustumerID(3);
 
         //create 'Database' (txt file) and add (Administror/Trainer/Customer) persons:
-        DataPersister dPinstance = DataPersister.getInstance();
+        DataPersister dP = DataPersister.getInstance();
 
-        dPinstance.createEntry(baddi);
-        dPinstance.createEntry(wieger);
-        dPinstance.createEntry(mark);
+        dP.createEntry(baddi);
+        dP.createEntry(wieger);
+        dP.createEntry(mark);
 
-        dPinstance.printEntry(dPinstance.retrieveEntry(baddi));
-        dPinstance.printEntry(dPinstance.retrieveEntry(1824));
+        dP.printEntry(dP.retrieveEntry(baddi));
+        dP.printEntry(dP.retrieveEntry(1824));
+        dP.printEntry(dP.retrieveEntry(5555));
+        dP.printEntry(dP.retrieveEntry(8888));
+
+        dP.printDatabase();
 
         //check pin and load (Administror/Trainer/Customer) person to adminOperator Instance
         //instance.checkPin(1824);

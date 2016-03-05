@@ -1,5 +1,6 @@
 package nl.Programit.administratie;
 public abstract class Person {
+	private int entryNumber;
 	private String firstName;
 	private String lastName;
 	private String street;
@@ -11,6 +12,14 @@ public abstract class Person {
 	private int pin;
 	private String emailAddress;
 	private String gender;
+
+	public int getEntryNumber() {
+		return entryNumber;
+	}
+
+	public void setEntryNumber(int entryNumber) {
+		this.entryNumber = entryNumber;
+	}
 
 	public String getEmailAddress() {
 		return emailAddress;

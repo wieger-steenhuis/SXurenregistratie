@@ -10,7 +10,7 @@ import nl.Programit.urenregistratieGUI.FXScenes.LoginScene;
 public class Main extends Application {
 
 
-    final static Stage window = new Stage();
+    private static Stage window = new Stage();
 
     @Override
     public void start(Stage primaryStage) throws Exception {

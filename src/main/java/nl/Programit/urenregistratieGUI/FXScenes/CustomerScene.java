@@ -25,6 +25,10 @@ public class CustomerScene {
         elements.setAlignment(Pos.CENTER);
         VBox menu = new VBox(30,logout);
 
+        //centre Vbox for "sessie"  with it's components
+        VBox sessieBox = new VBox(20);
+
+
         HBox fullbox = new HBox(menu,elements);
         fullbox.setFillHeight(true);
 

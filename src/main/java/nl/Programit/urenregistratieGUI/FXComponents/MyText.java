@@ -1,5 +1,6 @@
 package nl.Programit.urenregistratieGUI.FXComponents;
 
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 /**
@@ -20,6 +21,11 @@ public class MyText extends Text {
         this(text);
         setX(x);
         setY(y);
+    }
+
+    public MyText(String text, Color color){
+        this(text);
+        setFill(color);
     }
 
 }

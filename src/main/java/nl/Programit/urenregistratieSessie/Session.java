@@ -11,7 +11,7 @@ public class Session {
 	private boolean confirmed = false;
 	private Date date;
 	
-	Session(Trainer trainer, Customer customer, Date date){
+	public Session(Trainer trainer, Customer customer, Date date){
 		this.date = date;
 		this.trainer = trainer;
 		this.customer = customer;

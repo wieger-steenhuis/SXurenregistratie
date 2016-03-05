@@ -100,34 +100,35 @@ public class DataPersister {
         return null;
     }
 
-    public Person retrieveEntry(Person p){
+    public Person retrieveEntry(String firstName){
         ArrayList<String> inputLines = databaseCopy();
 
         if (inputLines == null)
             return null;
 
         for (String inputLine : inputLines){
-            //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
-            if (inputLine.charAt(1)=='c'){
-                Customer retrieved = new Customer();
-                retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
-                retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                return retrieved;
-            }
-            else if (inputLine.charAt(1)=='a'){
-                Administrator retrieved = new Administrator();
-                retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
-                retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                return retrieved;
-            }
-            else if (inputLine.charAt(1)=='t'){
-                Trainer retrieved = new Trainer();
-                retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
-                retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                return retrieved;
+            if (firstName.equals(inputLineToString(inputLine, "<nam>>", "<pin>>"))){
+                if (inputLine.charAt(1)=='c'){
+                    Customer retrieved = new Customer();
+                    retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
+                    retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
+                    retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+                    return retrieved;
+                }
+                else if (inputLine.charAt(1)=='a'){
+                    Administrator retrieved = new Administrator();
+                    retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
+                    retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
+                    retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+                    return retrieved;
+                }
+                else if (inputLine.charAt(1)=='t'){
+                    Trainer retrieved = new Trainer();
+                    retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
+                    retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
+                    retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+                    return retrieved;
+                }
             }
         }
         return null;

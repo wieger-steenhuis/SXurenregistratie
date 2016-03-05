@@ -28,7 +28,7 @@ public class Tester {
         dP.createEntry(wieger);
         dP.createEntry(mark);
 
-        dP.printEntry(dP.retrieveEntry(baddi));
+        dP.printEntry(dP.retrieveEntry("Mark"));
         dP.printEntry(dP.retrieveEntry(1824));
         dP.printEntry(dP.retrieveEntry(5555));
         dP.printEntry(dP.retrieveEntry(8888));

@@ -3,7 +3,7 @@ package nl.Programit.administratie;
 public class Customer extends Person {
 	private int custumerID;
 	private int credits;
-	private Subscription mySubscription;
+	//private Subscription mySubscription; nog niet zeker of dat nodig is
 	//private Gym mijnSportShool; nog niet zeker of dat nodig is
 
 	public void increaseCredits(int amount){
@@ -21,13 +21,13 @@ public class Customer extends Person {
 		this.custumerID = custumerID;
 	}
 
-	public Subscription getMySubscription() {
+	/*public Subscription getMySubscription() {
 		return mySubscription;
 	}
 
 	public void setMySubscription(Subscription mySubscription) {
 		this.mySubscription = mySubscription;
-	}
+	}*/
 
 	public int getCredits() {
 		return credits;

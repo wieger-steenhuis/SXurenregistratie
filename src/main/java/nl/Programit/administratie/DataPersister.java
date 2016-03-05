@@ -48,7 +48,7 @@ public class DataPersister {
 
     public synchronized void createEntry(Person p){
         String input;
-        p.setEntryNumber(nextEntryNumber()) ;
+        p.setEntryNumber(nextEntryNumber());
             if (p instanceof Trainer) {
                 input = "<tID>>" + ((Trainer) p).getEmployeeId() + "<eNR>>"+ p.getEntryNumber()+"<nam>>" +  p.getFirstName() + "<pin>>" + p.getPin()+"#";
             } else if (p instanceof Customer) {

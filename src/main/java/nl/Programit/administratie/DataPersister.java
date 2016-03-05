@@ -1,4 +1,4 @@
-package nl.Programit.urenregistratieModel1;
+package nl.Programit.administratie;
 
 import java.io.*;
 import java.util.*;
@@ -36,46 +36,33 @@ public class DataPersister {
 
     public void createEntry(Person p){
         String input;
-        try {
             if (p instanceof Trainer) {
-                input = "$tID>>" + ((Trainer) p).getEmployeeId() + "nam>>" +  p.getFirstName() + "pin>>" + p.getPin()+"#\n";
+                input = "$tID>>" + ((Trainer) p).getEmployeeId() + "nam>>" +  p.getFirstName() + "pin>>" + p.getPin()+"#";
             } else if (p instanceof Customer) {
-                input = "$cID>>" + ((Customer) p).getCustumerID() + "nam>>" + p.getFirstName() + "pin>>"+ p.getPin()+"#\n";
+                input = "$cID>>" + ((Customer) p).getCustumerID() + "nam>>" + p.getFirstName() + "pin>>"+ p.getPin()+"#";
             } else if (p instanceof Administrator) {
-                input = "$aID>>" + ((Administrator) p).getAdministratorID() + "nam>>" + p.getFirstName() + "pin>>" +  p.getPin()+"#\n";
+                input = "$aID>>" + ((Administrator) p).getAdministratorID() + "nam>>" + p.getFirstName() + "pin>>" +  p.getPin()+"#";
             } else return;
 
-            FileOutputStream out = new FileOutputStream(file, true); //boolean to append test in file
-            DataOutputStream dos = new DataOutputStream(out);
-            dos.writeUTF(input);
+        try(FileWriter fW = new FileWriter(file, true);
+            BufferedWriter writer = new BufferedWriter(fW)){
+            writer.write(input);
         }
-        catch (IOException e){}
+        catch (IOException e){
+            System.out.println("caught");
+        }
     }
 
     public Person retrieveEntry(int pin){
         //Person retrieved;
-        String output = new String();
-
-        try{
-            FileInputStream in = new FileInputStream(file);
-            DataInputStream din = new DataInputStream(in);
-            while (true) {
-                output += din.readUTF();
-            }
-        }
-        catch (IOException e) {}
-
+        String output = databaseCopy();
         ArrayList<String> inputLines = new ArrayList<>();
 
-        String tempOutput = output;
-
-        while (tempOutput != null){
-            if (tempOutput.lastIndexOf('#') != -1){
-                inputLines.add(tempOutput.substring((tempOutput.lastIndexOf('$')),tempOutput.length()-1));
-                tempOutput = tempOutput.substring(0,tempOutput.lastIndexOf('$'));
-            }
-            else tempOutput = null;
+        while (output.indexOf('#') != -1){
+            inputLines.add(output.substring(0,output.indexOf('#')+1));
+            output = output.substring(output.indexOf('#')+1,output.length());
         }
+
         for (String inputLine : inputLines){
             //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
             if (inputLine.charAt(1)=='c' && Integer.parseInt(databaseToString(inputLine, "pin>>", "#"))==pin){
@@ -104,27 +91,13 @@ public class DataPersister {
     }
 
     public Person retrieveEntry(Person p){
-        String output = new String();
-
-        try{
-            FileInputStream in = new FileInputStream(file);
-            DataInputStream din = new DataInputStream(in);
-            while (true) {
-                output += din.readUTF();
-            }
-        }
-        catch (IOException e) {}
-
+        String output = databaseCopy();
         ArrayList<String> inputLines = new ArrayList<>();
 
-        String tempOutput = output;
-
-        while (tempOutput != null){
-            if (tempOutput.lastIndexOf('#') != -1){
-                inputLines.add(tempOutput.substring((tempOutput.lastIndexOf('$')),tempOutput.length()-1));
-                tempOutput = tempOutput.substring(0,tempOutput.lastIndexOf('$'));
-            }
-            else tempOutput = null;
+        while (output.indexOf('#') != -1){
+            System.out.println(output.substring(0,output.indexOf('#')));
+            inputLines.add(output.substring(0,output.indexOf('#')+1));
+            output = output.substring(output.indexOf('#')+1,output.length());
         }
         for (String inputLine : inputLines){
             //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
@@ -139,6 +112,7 @@ public class DataPersister {
                 Administrator retrieved = new Administrator();
                 retrieved.setAdministratorID(Integer.parseInt(databaseToString(inputLine, "ID>>", "nam>>")));
                 retrieved.setFirstName(databaseToString(inputLine, "nam>>", "pin>>"));
+                System.out.println(inputLine);
                 retrieved.setPin(Integer.parseInt(databaseToString(inputLine, "pin>>", "#")));
                 return retrieved;
             }
@@ -152,6 +126,19 @@ public class DataPersister {
         }
         return null;
     }
+
+    private String databaseCopy(){
+        String output = null;
+        try(FileReader fR = new FileReader(file);
+            BufferedReader reader = new BufferedReader(fR)){
+            output = reader.readLine();
+        }
+        catch (IOException e){
+            System.out.println("caught");
+        }
+        return output;
+    }
+
 
     public String databaseToString (String inputLine, String regex1, String regex2){
         int start;
@@ -171,5 +158,16 @@ public class DataPersister {
         return inputLine.substring(start, end);
     }
 
+    public void printEntry (Person p){
+        if (p instanceof Administrator){
+            System.out.println("aID : "+((Administrator) p).getAdministratorID()+" naam: "+p.getFirstName()+" pin: "+p.getPin());
+        }
+        if (p instanceof Customer){
+            System.out.println("cID : "+((Customer) p).getCustumerID()+" naam: "+p.getFirstName()+" pin: "+p.getPin());
+        }
+        if (p instanceof Trainer){
+            System.out.println("tID : "+((Trainer) p).getEmployeeId()+" naam: "+p.getFirstName()+" pin: "+p.getPin());
+        }
+    }
 }
 

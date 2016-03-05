@@ -1,10 +1,10 @@
-import nl.Programit.urenregistratieModel1.*;
+import nl.Programit.administratie.*;
 
 public class Tester {
 
     public static void main(String[] args) {
         //create persons (Customer, Trainer and Administrator) with Singelton instance and constructor of AdminOperator class:
-        AdminOperator instance = AdminOperator.getInstance();
+        //AdminOperator instance = AdminOperator.getInstance();
 
         Administrator baddi = new Administrator();
         baddi.setPin(8888);
@@ -28,16 +28,19 @@ public class Tester {
         dPinstance.createEntry(wieger);
         dPinstance.createEntry(mark);
 
+        dPinstance.printEntry(dPinstance.retrieveEntry(baddi));
+        dPinstance.printEntry(dPinstance.retrieveEntry(1824));
+
         //check pin and load (Administror/Trainer/Customer) person to adminOperator Instance
-        instance.checkPin(1824);
-        instance.setCustomer((Customer)dPinstance.retrieveEntry(1824));
-        System.out.println(instance.getCustomer().getFirstName());
+        //instance.checkPin(1824);
+        //instance.setCustomer((Customer)dPinstance.retrieveEntry(1824));
+        //System.out.println(instance.getCustomer().getFirstName());
         //System.out.println("ID: "+instance.getCustomer().getCustumerID()+" Naam: "+instance.getCustomer().getFirstName());
 
-        instance.checkPin(8888);
+        //instance.checkPin(8888);
         //System.out.println("ID: "+instance.getAdministrator().getAdministratorID()+" Naam: "+instance.getAdministrator().getFirstName());
 
-        instance.checkPin(5555);
+        //instance.checkPin(5555);
         //System.out.println("ID: "+instance.getTrainer().getEmployeeId()+" Naam: "+instance.getTrainer().getFirstName());
 
 
@@ -50,9 +53,9 @@ public class Tester {
         //System.out.println(dPinstance.retrieveEntry(instance.getCustomer()).getPin());
         //System.out.println(dPinstance.retrieveEntry(instance.getCustomer()).getFirstName());
 
-        System.out.println(dPinstance.retrieveEntry(instance.getAdministrator()).getPin());
-        System.out.println(dPinstance.retrieveEntry(instance.getAdministrator()).getFirstName());
-        instance.printEntry((nl.Programit.urenregistratieModel1.AdminOperator.getInstance().checkPin(1824)));
+        //System.out.println(dPinstance.retrieveEntry(instance.getAdministrator()).getPin());
+        //System.out.println(dPinstance.retrieveEntry(instance.getAdministrator()).getFirstName());
+        //instance.printEntry((nl.Programit.administratie.AdminOperator.getInstance().checkPin(1824)));
         //System.out.println((dPinstance.retrieveEntry(instance.getAdministrator())).getPin());
 
     }

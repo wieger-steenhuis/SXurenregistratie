@@ -2,7 +2,7 @@
 package nl.Programit.urenregistratieSessie;
 import java.util.Date;
 import java.util.List;
-import nl.Programit.urenregistratieModel1.*;
+import nl.Programit.administratie.*;
 
 public class GymSession implements SessionManageable {
 	private String name;

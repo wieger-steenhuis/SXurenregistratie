@@ -1,4 +1,4 @@
-package nl.Programit.urenregistratieModel1;
+package nl.Programit.administratie;
 
 public class Trainer extends Person {
 	private int employeeId;

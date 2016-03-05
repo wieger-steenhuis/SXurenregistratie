@@ -1,4 +1,4 @@
-package nl.Programit.urenregistratieModel1;
+package nl.Programit.administratie;
 public abstract class Person {
 	private String firstName;
 	private String lastName;

@@ -4,14 +4,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
 import nl.Programit.urenregistratieGUI.FXComponents.MyPasswordField;
 import nl.Programit.urenregistratieGUI.FXComponents.NumberButton;
-import nl.Programit.urenregistratieModel1.*;
+import nl.Programit.administratie.*;
 
 /**
  * Created by udr013 on 3-3-2016.

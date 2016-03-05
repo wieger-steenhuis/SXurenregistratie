@@ -6,7 +6,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import nl.Programit.urenregistratieGUI.FXComponents.MyButton;
 import nl.Programit.urenregistratieGUI.Main;
-import nl.Programit.urenregistratieModel1.*;
+import nl.Programit.administratie.*;
 
 /**
  * Created by udr013 on 3-3-2016.

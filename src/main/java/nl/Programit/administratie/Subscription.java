@@ -1,4 +1,4 @@
-package nl.Programit.urenregistratieModel1;
+package nl.Programit.administratie;
 
 public class Subscription {
 	private static final int START_1 = 12; // aantal sessies bij abonnement type 1

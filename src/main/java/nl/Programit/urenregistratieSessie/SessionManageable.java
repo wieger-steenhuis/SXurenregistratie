@@ -1,5 +1,5 @@
 package nl.Programit.urenregistratieSessie;
-import nl.Programit.urenregistratieModel1.*;
+import nl.Programit.administratie.*;
 
 import java.util.*;
 

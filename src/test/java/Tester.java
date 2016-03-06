@@ -8,6 +8,7 @@ public class Tester {
         baddi.setPin(8888);
         baddi.setFirstName("Baddi");
         baddi.setAdministratorID(1);
+        baddi.setCity("Venlo");
 
         Trainer wieger = new Trainer();
         wieger.setPin(5555);
@@ -34,6 +35,7 @@ public class Tester {
         dP.printEntry(dP.retrieveEntry(8888));
 
         System.out.println("Mark woont in "+dP.retrieveEntry(1824).getCity());
+        System.out.println("Baddi woont in "+dP.retrieveEntry("Baddi").getCity());
 
         //print entire database:
         dP.printDatabase();

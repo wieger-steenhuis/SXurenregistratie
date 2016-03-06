@@ -41,7 +41,7 @@ public class DataPersister {
         }
         else {
         String lastEntry = inputLines.get(inputLines.size()-1);
-        int lastEntryNumber = Integer.parseInt(inputLineToString(lastEntry, "<eNR>>", "<nam>>"));
+        int lastEntryNumber = Integer.parseInt(inputLineToString(lastEntry, "<eNR>>", "<fNm>>"));
         return lastEntryNumber + 1;
         }
     }
@@ -50,12 +50,13 @@ public class DataPersister {
         String input;
         p.setEntryNumber(nextEntryNumber());
             if (p instanceof Trainer) {
-                input = "<tID>>" + ((Trainer) p).getEmployeeId() + "<eNR>>"+ p.getEntryNumber()+"<nam>>" +  p.getFirstName() + "<pin>>" + p.getPin()+"#";
+                input = "<tID>>" + ((Trainer) p).getEmployeeId();
             } else if (p instanceof Customer) {
-                input = "<cID>>" + ((Customer) p).getCustumerID() + "<eNR>>"+ p.getEntryNumber()+"<nam>>" +  p.getFirstName() + "<pin>>" + p.getPin()+"#";
+                input = "<cID>>" + ((Customer) p).getCustumerID();
             } else if (p instanceof Administrator) {
-                input = "<aID>>" + ((Administrator) p).getAdministratorID() + "<eNR>>"+ p.getEntryNumber()+"<nam>>" +  p.getFirstName() + "<pin>>" + p.getPin()+"#";
+                input = "<aID>>" + ((Administrator) p).getAdministratorID();
             } else return;
+        input = input.concat("<eNR>>"+ p.getEntryNumber()+"<fNm>>" +  p.getFirstName() +"<lNm>>"+p.getLastName()+"<gdr>>"+p.getGender()+"<str>>"+p.getStreet()+"<hNr>>"+p.getHouseNr()+"<zip>>"+p.getZipCode()+"<cty>>"+p.getCity()+ "<pin>>" + p.getPin()+"#");
 
         try(FileWriter fW = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fW)){
@@ -67,7 +68,7 @@ public class DataPersister {
     }
 
     public Person retrieveEntry(int pin){
-        //Person retrieved;
+
         ArrayList<String> inputLines = databaseCopy();
 
         if (inputLines == null)
@@ -76,25 +77,13 @@ public class DataPersister {
         for (String inputLine : inputLines){
             //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
             if (inputLine.charAt(1)=='c' && Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
-                Customer retrieved = new Customer();
-                retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
-                retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                return retrieved;
+                return createCustomer(inputLine);
             }
             else if (inputLine.charAt(1)=='a' && Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
-                Administrator retrieved = new Administrator();
-                retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
-                retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                return retrieved;
+                return createAdministrator(inputLine);
             }
             else if (inputLine.charAt(1)=='t'&& Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
-                Trainer retrieved = new Trainer();
-                retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
-                retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                return retrieved;
+                return createTrainer(inputLine);
             }
         }
         return null;
@@ -107,31 +96,41 @@ public class DataPersister {
             return null;
 
         for (String inputLine : inputLines){
-            if (firstName.equals(inputLineToString(inputLine, "<nam>>", "<pin>>"))){
+            if (firstName.equals(inputLineToString(inputLine, "<fNm>>", "<lNm>>"))){
                 if (inputLine.charAt(1)=='c'){
-                    Customer retrieved = new Customer();
-                    retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
-                    retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                    retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                    return retrieved;
+                    return createCustomer(inputLine);
                 }
                 else if (inputLine.charAt(1)=='a'){
-                    Administrator retrieved = new Administrator();
-                    retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
-                    retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                    retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                    return retrieved;
+                    return createAdministrator(inputLine);
                 }
                 else if (inputLine.charAt(1)=='t'){
-                    Trainer retrieved = new Trainer();
-                    retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
-                    retrieved.setFirstName(inputLineToString(inputLine, "<nam>>", "<pin>>"));
-                    retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
-                    return retrieved;
+                    return createTrainer(inputLine);
                 }
             }
         }
         return null;
+    }
+
+    private Customer createCustomer(String inputLine){
+        Customer retrieved = new Customer();
+        retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
+        retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
+        retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+        return retrieved;
+    }
+    private Administrator createAdministrator(String inputLine){
+        Administrator retrieved = new Administrator();
+        retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
+        retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
+        retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+        return retrieved;
+    }
+    private Trainer createTrainer(String inputLine){
+        Trainer retrieved = new Trainer();
+        retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
+        retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
+        retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+        return retrieved;
     }
 
     private ArrayList<String> databaseCopy(){

@@ -16,11 +16,9 @@ public abstract class Person {
 	public int getEntryNumber() {
 		return entryNumber;
 	}
-
 	public void setEntryNumber(int entryNumber) {
 		this.entryNumber = entryNumber;
 	}
-
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -75,32 +73,16 @@ public abstract class Person {
 	public void setHouseNr(int houseNr) {
 		this.houseNr = houseNr;
 	}
-
-
-
 	public java.util.Date getBirthDay() {
 		return birthDay;
 	}
-
-
-
 	public void setBirthDay(java.util.Date birthDay) {
 		this.birthDay = birthDay;
 	}
-
-
-
 	public String getBankAccountID() {
 		return bankAccountID;
 	}
-
-
-
 	public void setBankAccountID(String bankAccountID) {
 		this.bankAccountID = bankAccountID;
 	}
-
-
-
-
 }

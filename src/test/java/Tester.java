@@ -18,6 +18,7 @@ public class Tester {
         mark.setPin(1824);
         mark.setFirstName("Mark");
         mark.setCustumerID(3);
+        mark.setCity("Asten");
 
         //create 'Database' (txt file) and add (Administror/Trainer/Customer) persons:
         DataPersister dP = DataPersister.getInstance();
@@ -31,6 +32,8 @@ public class Tester {
         dP.printEntry(dP.retrieveEntry(1824));
         dP.printEntry(dP.retrieveEntry(5555));
         dP.printEntry(dP.retrieveEntry(8888));
+
+        System.out.println("Mark woont in "+dP.retrieveEntry(1824).getCity());
 
         //print entire database:
         dP.printDatabase();

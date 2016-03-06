@@ -115,6 +115,12 @@ public class DataPersister {
         Customer retrieved = new Customer();
         retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
         retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
+        retrieved.setLastName(inputLineToString(inputLine, "<lNm>>", "<gdr>>"));
+        retrieved.setGender(inputLineToString(inputLine, "<gdr>>", "<str>>"));
+        retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
+        retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
+        retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
+        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<pin>>"));
         retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
         return retrieved;
     }
@@ -122,6 +128,12 @@ public class DataPersister {
         Administrator retrieved = new Administrator();
         retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
         retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
+        retrieved.setLastName(inputLineToString(inputLine, "<lNm>>", "<gdr>>"));
+        retrieved.setGender(inputLineToString(inputLine, "<gdr>>", "<str>>"));
+        retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
+        retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
+        retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
+        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<pin>>"));
         retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
         return retrieved;
     }
@@ -129,6 +141,12 @@ public class DataPersister {
         Trainer retrieved = new Trainer();
         retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
         retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
+        retrieved.setLastName(inputLineToString(inputLine, "<lNm>>", "<gdr>>"));
+        retrieved.setGender(inputLineToString(inputLine, "<gdr>>", "<str>>"));
+        retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
+        retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
+        retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
+        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<pin>>"));
         retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
         return retrieved;
     }

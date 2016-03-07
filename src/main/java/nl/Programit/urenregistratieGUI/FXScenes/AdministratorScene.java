@@ -99,7 +99,7 @@ public class AdministratorScene {
             dPinstance.getInstance().createEntry(thisPerson);
 
             //clear fields after person is added to database
-           idNr.clear();gender.clear();firstName.clear();lastName.clear();street.clear();houseNr.clear();zipCode.clear();
+           idNr.clear();gender.clear();firstName.clear();lastName.clear();street.clear();houseNr.clear();zipCode.clear();birthdayDate.setValue(null);
                         city.clear();bankAccount.clear();email.clear(); pin.clear();
                 alerttext.setText("");
                 //birthdayDate.

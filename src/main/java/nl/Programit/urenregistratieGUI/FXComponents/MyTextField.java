@@ -8,8 +8,8 @@ import javafx.scene.control.TextField;
 public class MyTextField extends TextField {
     public MyTextField(String prevText){
         setPromptText(prevText);
-        setMaxWidth(300);
-        setStyle("-fx-font: 22 italic; -fx-text-fill: #000000");
+        //setMaxWidth(300);
+        //setStyle("-fx-font: 22 italic; -fx-text-fill: #000000");
     }
     public MyTextField(String prevText, double width){
         this(prevText);

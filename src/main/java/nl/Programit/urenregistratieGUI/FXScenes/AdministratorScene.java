@@ -88,7 +88,7 @@ public class AdministratorScene {
                 thisPerson.setHouseNr(Integer.parseInt(houseNr.getText()));
                 thisPerson.setCity(city.getText());
                 thisPerson.setZipCode(zipCode.getText());
-                //thisPerson.setBirthDay(birthdayDate.);
+                thisPerson.setBirthDay(birthdayDate.getValue());
                 thisPerson.setPin(Integer.parseInt(pin.getText()));
                 thisPerson.setBankAccountID(bankAccount.getText());
                 thisPerson.setEmailAddress(email.getText());

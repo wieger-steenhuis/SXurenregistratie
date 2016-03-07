@@ -118,8 +118,8 @@ public class AdministratorScene {
         createAccount.setAlignment(Pos.CENTER_RIGHT);
 
         //center VBox createAccount and Attributes
-        createAccountVBox = new VBox(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
-                city,birthdayDate,bankAccount,email, pin, confirmB,alerttext);
+        createAccountVBox = new VBox(menuButton,confirmB,alerttext, pin, idNr,gender, firstName,lastName,street,houseNr,zipCode,
+                city,birthdayDate,bankAccount,email);
         createAccountVBox.setSpacing(15);
         createAccountVBox.setAlignment(Pos.CENTER);
 

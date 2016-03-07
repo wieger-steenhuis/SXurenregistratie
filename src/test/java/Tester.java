@@ -14,6 +14,7 @@ public class Tester {
         wieger.setPin(5555);
         wieger.setFirstName("Wieger");
         wieger.setEmployeeId(2);
+        wieger.setBirthDay(java.time.LocalDate.of(1981, 3, 25));
 
         Customer mark = new Customer();
         mark.setPin(1824);
@@ -36,6 +37,8 @@ public class Tester {
 
         System.out.println("Mark woont in "+dP.retrieveEntry(1824).getCity());
         System.out.println("Baddi woont in "+dP.retrieveEntry("Baddi").getCity());
+
+        System.out.println("Wiegers verjaardag is "+dP.retrieveEntry("Wieger").getBirthDay());
 
         //print entire database:
         dP.printDatabase();

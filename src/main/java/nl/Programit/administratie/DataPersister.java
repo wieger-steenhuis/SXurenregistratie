@@ -56,7 +56,7 @@ public class DataPersister {
             } else if (p instanceof Administrator) {
                 input = "<aID>>" + ((Administrator) p).getAdministratorID();
             } else return;
-        input = input.concat("<eNR>>"+ p.getEntryNumber()+"<fNm>>" +  p.getFirstName() +"<lNm>>"+p.getLastName()+"<gdr>>"+p.getGender()+"<str>>"+p.getStreet()+"<hNr>>"+p.getHouseNr()+"<zip>>"+p.getZipCode()+"<cty>>"+p.getCity()+ "<pin>>" + p.getPin()+"#");
+        input = input.concat("<eNR>>"+ p.getEntryNumber()+"<fNm>>" +  p.getFirstName() +"<lNm>>"+p.getLastName()+"<gdr>>"+p.getGender()+"<str>>"+p.getStreet()+"<hNr>>"+p.getHouseNr()+"<zip>>"+p.getZipCode()+"<cty>>"+p.getCity()+ "<eml>>"+ p.getEmailAddress()+ "<bDy>>"+ p.getBirthDayString()+ "<pin>>" + p.getPin()+"#");
 
         try(FileWriter fW = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fW)){
@@ -120,7 +120,9 @@ public class DataPersister {
         retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
         retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
         retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
-        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<pin>>"));
+        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<eml>>"));
+        retrieved.setEmailAddress(inputLineToString(inputLine, "<eml>>", "<bDy>>"));
+        retrieved.setBirthdayStringInput(inputLineToString(inputLine, "<bDy>>", "<pin>>"));
         retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
         return retrieved;
     }
@@ -133,7 +135,9 @@ public class DataPersister {
         retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
         retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
         retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
-        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<pin>>"));
+        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<eml>>"));
+        retrieved.setEmailAddress(inputLineToString(inputLine, "<eml>>", "<bDy>>"));
+        retrieved.setBirthdayStringInput(inputLineToString(inputLine, "<bDy>>", "<pin>>"));
         retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
         return retrieved;
     }
@@ -146,7 +150,9 @@ public class DataPersister {
         retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
         retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
         retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
-        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<pin>>"));
+        retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<eml>>"));
+        retrieved.setEmailAddress(inputLineToString(inputLine, "<eml>>", "<bDy>>"));
+        retrieved.setBirthdayStringInput(inputLineToString(inputLine, "<bDy>>", "<pin>>"));
         retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
         return retrieved;
     }

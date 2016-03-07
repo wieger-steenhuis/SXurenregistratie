@@ -1,4 +1,7 @@
 package nl.Programit.administratie;
+
+import java.time.LocalDate;
+
 public abstract class Person {
 	private int entryNumber;
 	private String firstName;
@@ -7,7 +10,7 @@ public abstract class Person {
 	private String zipCode;
 	private String city;
 	private int houseNr;
-	private java.util.Date birthDay;
+	private LocalDate birthDay;
 	private String bankAccountID;
 	private int pin;
 	private String emailAddress;
@@ -73,11 +76,24 @@ public abstract class Person {
 	public void setHouseNr(int houseNr) {
 		this.houseNr = houseNr;
 	}
-	public java.util.Date getBirthDay() {
+	public LocalDate getBirthDay() {
 		return birthDay;
 	}
-	public void setBirthDay(java.util.Date birthDay) {
+	public void setBirthDay(LocalDate birthDay) {
 		this.birthDay = birthDay;
+	}
+	public String getBirthDayString(){
+		if (this.getBirthDay() == null) return null;
+		else return this.getBirthDay().toString();
+	}
+	public void setBirthdayStringInput(String databaseDate){
+		if (databaseDate.equals("null")) return;
+		else {
+			int year = Integer.parseInt(databaseDate.substring(0, databaseDate.indexOf("-")));
+			int month = Integer.parseInt(databaseDate.substring(databaseDate.indexOf("-") + 1, databaseDate.lastIndexOf("-")));
+			int day = Integer.parseInt(databaseDate.substring(databaseDate.lastIndexOf("-") + 1, databaseDate.length()));
+			this.setBirthDay(LocalDate.of(year, month, day));
+		}
 	}
 	public String getBankAccountID() {
 		return bankAccountID;

@@ -40,6 +40,19 @@ public class Tester {
 
         System.out.println("Wiegers verjaardag is "+dP.retrieveEntry("Wieger").getBirthDay());
 
+        dP.printDatabase();
+
+        Administrator baddi2 = new Administrator();
+        baddi2.setPin(8888);
+        baddi2.setFirstName("Baddi2");
+        baddi2.setAdministratorID(1);
+        baddi2.setCity("Venlo");
+
+
+        dP.updateEntry(baddi2);
+
+        dP.deleteEntry(mark);
+
         //print entire database:
         dP.printDatabase();
     }

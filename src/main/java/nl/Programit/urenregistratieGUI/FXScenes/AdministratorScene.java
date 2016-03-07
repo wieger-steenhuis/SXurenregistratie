@@ -95,8 +95,8 @@ public class AdministratorScene {
                 thisPerson.setGender(gender.getText());
 
 
-            dPinstance.createEntry(thisPerson);
-            dPinstance.getInstance().createEntry(thisPerson);
+                dPinstance.createEntry(thisPerson);
+                //dPinstance.getInstance().createEntry(thisPerson);
 
             //clear fields after person is added to database
            idNr.clear();gender.clear();firstName.clear();lastName.clear();street.clear();houseNr.clear();zipCode.clear();birthdayDate.setValue(null);

@@ -54,7 +54,7 @@ public class LoginScene {
             window.setWidth(width);
             window.setHeight(hight);
             int pincodenr = Integer.parseInt(pincodeField.getText());
-            Person thisPerson = AdminOperator.getInstance().checkPin(pincodenr);
+            Person thisPerson = DataPersister.getInstance().retrieveEntry(pincodenr);
             if ((pincodeField.getLength() == 4) && !(thisPerson == null)) {
                 if ((thisPerson instanceof Trainer)) {
                     pincodeField.clear();

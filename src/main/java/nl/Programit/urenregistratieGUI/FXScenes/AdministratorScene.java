@@ -15,7 +15,7 @@ import nl.Programit.administratie.*;
 public class AdministratorScene {
 
     private static int type = 0;
-    private static VBox createAccountVBox;
+    private static VBox AccountVBox;
 
     public static Scene getAdministratorScene(Person person) {
 
@@ -26,6 +26,7 @@ public class AdministratorScene {
 
         //menuButton and event to set PersonType
         MenuButton menuButton = new MenuButton("Create Account of type");
+        MenuButton customertoEditButton = geteditableEntries();
         MenuItem klant = new MenuItem("Klant");
         MenuItem trainer = new MenuItem("Trainer");
         MenuItem admin = new MenuItem("Administrator");
@@ -49,7 +50,9 @@ public class AdministratorScene {
         MyButton logout = Main.getLogout();
 
         MyButton createAccount = new MyButton("Create Account");
+        MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
+        MyButton update = new MyButton("update");
         MyText alerttext = new MyText("", Color.CRIMSON);
 
         MyTextField idNr = new MyTextField("ID");
@@ -67,6 +70,21 @@ public class AdministratorScene {
 
 
         //ActionEvents various buttons
+        createAccount.setOnAction(event1 -> {
+            AccountVBox.getChildren().clear();
+            AccountVBox.getChildren().addAll(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
+                    city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
+        });
+        editAccount.setOnAction(event1 -> {
+            AccountVBox.getChildren().clear();
+            AccountVBox.getChildren().addAll(customertoEditButton, menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
+                    city,birthdayDate,bankAccount,email, pin,update,alerttext);
+            menuButton.setText("admin");
+            idNr.setText("3");
+            //gender, firstName,lastName,street,houseNr,zipCode,
+             //       city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
+
+        });
         confirmB.setOnAction(event -> {
             if(menuButton.getText().equals("Create Account of type")) {
               alerttext.setText("Selecteer eerst juiste account type!");
@@ -113,20 +131,26 @@ public class AdministratorScene {
         VBox elements = new VBox(welkomText);
 
         //left side Vbox Basic Menu options
-        VBox menuVBox = new VBox(elements, logout, createAccount);
+        VBox menuVBox = new VBox(elements, logout, createAccount,editAccount);
         logout.setAlignment(Pos.TOP_LEFT);
         createAccount.setAlignment(Pos.CENTER_RIGHT);
 
         //center VBox createAccount and Attributes
-        createAccountVBox = new VBox(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
+        AccountVBox = new VBox(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
                 city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
-        createAccountVBox.setSpacing(15);
-        createAccountVBox.setAlignment(Pos.CENTER);
+        AccountVBox.setSpacing(15);
+        AccountVBox.setAlignment(Pos.CENTER);
 
         // bring all elements together :)
-        HBox fullbox = new HBox(menuVBox, createAccountVBox);
+        HBox fullbox = new HBox(menuVBox, AccountVBox);
         Scene scene = new Scene(fullbox);
         return scene;
+    }
+
+    private static MenuButton geteditableEntries() {
+        MenuButton x = new MenuButton("Selecteer een persoon");
+        return x;
+
     }
 
     private static Person getPType() {

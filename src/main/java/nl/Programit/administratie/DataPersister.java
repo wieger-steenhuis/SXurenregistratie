@@ -37,7 +37,7 @@ public class DataPersister {
     }
 
     // synchronized entryNumber to prevent simultaneous creation of entrynumber:
-    public synchronized int nextEntryNumber(){
+    private synchronized int nextEntryNumber(){
         ArrayList<String> inputLines = databaseCopy();
         if (inputLines == null) {
             return 100001;
@@ -80,7 +80,6 @@ public class DataPersister {
             return null;
 
         for (String inputLine : inputLines){
-            //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
             if (inputLine.charAt(1)=='c' && Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
                 return createCustomer(inputLine);
             }
@@ -117,18 +116,15 @@ public class DataPersister {
     }
 
     //Update entry copies entire database to String, replaces entry and copies String back to txt-file:
-    public void updateEntry(Person p){
+    public void updateEntry(Person p, int pinToCheck){
         ArrayList<String> inputLines = databaseCopy();
         String newDatabase = "";
-        System.out.println(p.getPin());
 
         if (inputLines == null)
             return;
 
         for (int i = 0; i<inputLines.size(); i++) {
-            if (Integer.parseInt(inputLineToString(inputLines.get(i), "<pin>>", "#")) == p.getPin()) {
-                System.out.println(p.getPin()); //CONTROLE
-                System.out.println(inputLineToString(inputLines.get(i), "<pin>>", "#"));//CONTROLE
+            if (Integer.parseInt(inputLineToString(inputLines.get(i), "<pin>>", "#")) == pinToCheck) {
                 inputLines.set(i, createUpdatedEntryLine(p, inputLineToString(inputLines.get(i), "<eNR>>", "<fNm>>")));
                 break;
             }
@@ -161,7 +157,7 @@ public class DataPersister {
     }
 
     // replace entryline in entry String array before copying back to txt-file:
-    public synchronized String createUpdatedEntryLine(Person p, String entryNumber) {
+    private synchronized String createUpdatedEntryLine(Person p, String entryNumber) {
 
         String input;
 
@@ -177,7 +173,7 @@ public class DataPersister {
     }
 
     // replaces whole database after entry update or delete:
-    public void replaceDataBase(String database){
+    private void replaceDataBase(String database){
         try(FileWriter fW = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fW)){
             writer.write(database);
@@ -257,7 +253,7 @@ public class DataPersister {
     }
 
     // retrieve all items from database with regex matching:
-    public String inputLineToString(String inputLine, String regex1, String regex2){
+    private String inputLineToString(String inputLine, String regex1, String regex2){
         int start;
         int end;
         Pattern pattern = Pattern.compile(regex1);

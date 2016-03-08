@@ -125,7 +125,7 @@ public class AdministratorScene {
         });
 
         update.setOnAction(event -> {
-            //int pinToCheck = Integer.parseInt(customerToEditField.getText());
+            int pinToCheck = Integer.parseInt(customerToEditField.getText());
 
             //Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);/// check check
 
@@ -138,7 +138,7 @@ public class AdministratorScene {
 
                 thisPerson =setPersonReady(thisPerson);
 
-                dPinstance.updateEntry(thisPerson);
+                dPinstance.updateEntry(thisPerson, pinToCheck);
 
                 clearFields();
             }});

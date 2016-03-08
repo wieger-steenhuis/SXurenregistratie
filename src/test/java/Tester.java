@@ -53,8 +53,8 @@ public class Tester {
         mark2.setFirstName("MAAAARK");
 
 
-        dP.updateEntry(baddi2);
-        dP.updateEntry(mark2);
+        //dP.updateEntry(baddi2, 1313);
+        //dP.updateEntry(mark2, 1331);
 
         //dP.deleteEntry(mark);
 

@@ -14,6 +14,7 @@ import nl.Programit.administratie.*;
  */
 public class AdministratorScene {
 
+    private static  Person thisPerson;
     private static int type = 0;
     private static VBox AccountVBox;
     private static MyText alerttext = new MyText("", Color.CRIMSON);
@@ -49,6 +50,7 @@ public class AdministratorScene {
         MenuItem trainer = new MenuItem("Trainer");
         MenuItem admin = new MenuItem("Administrator");
 
+        //menubutton en menuItems
         menuButton.getItems().addAll(klant, trainer, admin);
 
         klant.setOnAction(e -> {
@@ -94,7 +96,7 @@ public class AdministratorScene {
         customertoEditButton.setOnAction(event1 -> {
             int pinToCheck = Integer.parseInt(customerToEditField.getText());
 
-            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+            thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
 
                     if ((thisPerson instanceof Trainer)) {
                         idNr.setText(""+((Trainer)thisPerson).getEmployeeId());
@@ -123,9 +125,9 @@ public class AdministratorScene {
         });
 
         update.setOnAction(event -> {
-            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+            //int pinToCheck = Integer.parseInt(customerToEditField.getText());
 
-            Person thisPerson;// = DataPersister.getInstance().retrieveEntry(pinToCheck);
+            //Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);/// check check
 
             if(menuButton.getText().equals("Create Account of type")) {
                 alerttext.setText("Selecteer eerst juiste account type!");
@@ -134,7 +136,7 @@ public class AdministratorScene {
                 DataPersister dPinstance = DataPersister.getInstance();
                 thisPerson = getPType();
 
-                setPersonReady(thisPerson);
+                thisPerson =setPersonReady(thisPerson);
 
                 dPinstance.updateEntry(thisPerson);
 
@@ -142,9 +144,9 @@ public class AdministratorScene {
             }});
 
         delete.setOnAction(event1 -> {
-            int pinToCheck = Integer.parseInt(customerToEditField.getText());
-
-            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+//            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+//
+//            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
             DataPersister dPinstance = DataPersister.getInstance();
             dPinstance.deleteEntry(thisPerson);
 
@@ -153,18 +155,19 @@ public class AdministratorScene {
 
 
         confirmB.setOnAction(event -> {
-//            int pinToCheck = Integer.parseInt(customerToEditField.getText());
-//            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
-//            if (thisPerson!=null){
-//                alerttext.setText("Deze PinCode is reeds in gebruik");
+//            int pinToCheck = Integer.parseInt(pin.getText());
+//            Person thatPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+//            if (thatPerson.getPin()!=0){
+//                alerttext.setText(alerttext.getText()+"Deze PinCode is reeds in gebruik");
 //            }
+//
 //            else
             if(menuButton.getText().equals("Create Account of type")) {
-              alerttext.setText("Selecteer eerst juiste account type!");
+              alerttext.setText(alerttext.getText()+"Selecteer eerst juiste account type!");
             }
             else{
             DataPersister dPinstance = DataPersister.getInstance();
-            Person thisPerson = getPType();
+            thisPerson = getPType();
                 //All fields get filled
                 setPersonReady(thisPerson);
                 //writes person to DB
@@ -207,7 +210,7 @@ public class AdministratorScene {
         menuButton.setText("Create Account of type");
     }
 
-    private static void setPersonReady(Person thisPerson) {
+    private static Person setPersonReady(Person thisPerson) {
 
         if(thisPerson instanceof Administrator){
             ((Administrator)thisPerson).setAdministratorID(Integer.parseInt(idNr.getText()));
@@ -228,6 +231,7 @@ public class AdministratorScene {
         thisPerson.setBankAccountID(bankAccount.getText());
         thisPerson.setEmailAddress(email.getText());
         thisPerson.setGender(gender.getText());
+        return thisPerson;
     }
 
 
@@ -243,8 +247,8 @@ public class AdministratorScene {
 
     private static Person getEditablePerson(int pin){
         DataPersister dPinstance = DataPersister.getInstance();
-        Person editablePerson = getPType();
-        return editablePerson;
+        thisPerson = getPType();
+        return thisPerson;
     }
 
 }

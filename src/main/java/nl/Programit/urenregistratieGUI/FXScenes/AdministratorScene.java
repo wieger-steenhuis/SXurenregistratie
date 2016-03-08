@@ -72,7 +72,7 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
-        MyButton update = new MyButton("Bevestig");
+        MyButton update = new MyButton("Update");
         MyButton delete = new MyButton("Delete Account");
 
 
@@ -88,8 +88,8 @@ public class AdministratorScene {
         editAccount.setOnAction(event1 -> {
             AccountVBox.getChildren().clear();
             AccountVBox.getChildren().addAll(editCustomer, menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
-                    city,birthdayDate,bankAccount,email, pin,confirmB,alerttext, delete);
-            confirmB.setText("Update");
+                    city,birthdayDate,bankAccount,email, pin,update,alerttext, delete);
+            //confirmB.setText("Update");
 
         });
 

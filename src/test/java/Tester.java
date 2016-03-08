@@ -48,10 +48,13 @@ public class Tester {
         baddi2.setAdministratorID(1);
         baddi2.setCity("Venlo");
 
-        Customer
+        Customer mark2 = new Customer();
+        mark2.setPin(1824);
+        mark2.setFirstName("MAAAARK");
 
 
         dP.updateEntry(baddi2);
+        dP.updateEntry(mark2);
 
         //dP.deleteEntry(mark);
 

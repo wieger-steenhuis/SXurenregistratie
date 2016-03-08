@@ -16,6 +16,21 @@ public class AdministratorScene {
 
     private static int type = 0;
     private static VBox AccountVBox;
+    private static MyText alerttext = new MyText("", Color.CRIMSON);
+    private static MenuButton menuButton = new MenuButton("Create Account of type");
+
+    private static MyTextField idNr = new MyTextField("ID");
+    private static MyTextField gender = new MyTextField("Geslacht");
+    private static MyTextField firstName = new MyTextField("Voornaam");
+    private static MyTextField lastName = new MyTextField("Achternaam");
+    private static MyTextField street = new MyTextField("Straat");
+    private static MyTextField houseNr = new MyTextField("Huisnummer");
+    private static MyTextField zipCode = new MyTextField("Postcode");
+    private static MyTextField city = new MyTextField("Stad");
+    private static MyTextField email = new MyTextField("E-mail Adres");
+    private static MyTextField bankAccount = new MyTextField("Bank Rekening");
+    private static MyTextField pin = new MyTextField("Pincode");
+    private static MyDatePicker birthdayDate = new MyDatePicker();
 
     public static Scene getAdministratorScene(Person person) {
 
@@ -25,8 +40,11 @@ public class AdministratorScene {
 
 
         //menuButton and event to set PersonType
-        MenuButton menuButton = new MenuButton("Create Account of type");
-        MenuButton customertoEditButton = geteditableEntries();
+
+        Button customertoEditButton = new Button("Vind");
+        TextField customerToEditField = new TextField();
+        customerToEditField.setPromptText("Account Pin");
+        HBox editCustomer = new HBox(customerToEditField,customertoEditButton);
         MenuItem klant = new MenuItem("Klant");
         MenuItem trainer = new MenuItem("Trainer");
         MenuItem admin = new MenuItem("Administrator");
@@ -52,21 +70,10 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
-        MyButton update = new MyButton("update");
-        MyText alerttext = new MyText("", Color.CRIMSON);
+        MyButton update = new MyButton("Bevestig");
+        MyButton delete = new MyButton("Delete Account");
 
-        MyTextField idNr = new MyTextField("ID");
-        MyTextField gender = new MyTextField("Geslacht");
-        MyTextField firstName = new MyTextField("Voornaam");
-        MyTextField lastName = new MyTextField("Achternaam");
-        MyTextField street = new MyTextField("Straat");
-        MyTextField houseNr = new MyTextField("Huisnummer");
-        MyTextField zipCode = new MyTextField("Postcode");
-        MyTextField city = new MyTextField("Stad");
-        MyTextField email = new MyTextField("E-mail Adres");
-        MyTextField bankAccount = new MyTextField("Bank Rekening");
-        MyTextField pin = new MyTextField("Pincode");
-        MyDatePicker birthdayDate = new MyDatePicker();
+
 
 
         //ActionEvents various buttons
@@ -74,54 +81,98 @@ public class AdministratorScene {
             AccountVBox.getChildren().clear();
             AccountVBox.getChildren().addAll(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
                     city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
+            confirmB.setText("Bevestig");
         });
         editAccount.setOnAction(event1 -> {
             AccountVBox.getChildren().clear();
-            AccountVBox.getChildren().addAll(customertoEditButton, menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
-                    city,birthdayDate,bankAccount,email, pin,update,alerttext);
-            menuButton.setText("admin");
-            idNr.setText("3");
-            //gender, firstName,lastName,street,houseNr,zipCode,
-             //       city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
+            AccountVBox.getChildren().addAll(editCustomer, menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
+                    city,birthdayDate,bankAccount,email, pin,confirmB,alerttext, delete);
+            confirmB.setText("Update");
 
         });
+
+        customertoEditButton.setOnAction(event1 -> {
+            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+
+            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+
+                    if ((thisPerson instanceof Trainer)) {
+                        idNr.setText(""+((Trainer)thisPerson).getEmployeeId());
+
+                    } else if ((thisPerson instanceof Administrator)) {
+                        idNr.setText(""+((Administrator)thisPerson).getAdministratorID());
+
+                    } else if ((thisPerson instanceof Customer)) {
+                        idNr.setText(""+((Customer)thisPerson).getCustumerID());
+
+                    }
+
+            gender.setText(thisPerson.getGender());
+            firstName.setText(thisPerson.getFirstName());
+            lastName.setText(thisPerson.getLastName());
+            street.setText(thisPerson.getStreet());
+            houseNr.setText(""+thisPerson.getHouseNr());
+            zipCode.setText(thisPerson.getZipCode());
+            city.setText(thisPerson.getCity());
+            birthdayDate.setPromptText(""+thisPerson.getBirthDay());
+            bankAccount.setText(thisPerson.getBankAccountID());
+            email.setText(thisPerson.getEmailAddress());
+            pin.setText(""+thisPerson.getPin());
+
+
+        });
+
+        update.setOnAction(event -> {
+            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+
+            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+
+            if(menuButton.getText().equals("Create Account of type")) {
+                alerttext.setText("Selecteer eerst juiste account type!");
+            }
+            else{
+                DataPersister dPinstance = DataPersister.getInstance();
+                thisPerson = getPType();
+
+                setPersonReady(thisPerson);
+
+                dPinstance.updateEntry(thisPerson);
+
+                clearFields();
+            }});
+
+        delete.setOnAction(event1 -> {
+            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+
+            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+            DataPersister dPinstance = DataPersister.getInstance();
+            dPinstance.deleteEntry(thisPerson);
+
+            clearFields();
+        });
+
+
         confirmB.setOnAction(event -> {
+//            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+//            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+//            if (thisPerson!=null){
+//                alerttext.setText("Deze PinCode is reeds in gebruik");
+//            }
+//            else
             if(menuButton.getText().equals("Create Account of type")) {
               alerttext.setText("Selecteer eerst juiste account type!");
             }
             else{
             DataPersister dPinstance = DataPersister.getInstance();
             Person thisPerson = getPType();
-
-                if(thisPerson instanceof Administrator){
-                ((Administrator)thisPerson).setAdministratorID(Integer.parseInt(idNr.getText()));
-            }else if(thisPerson instanceof Trainer){
-                ((Trainer)thisPerson).setEmployeeId(Integer.parseInt(idNr.getText()));
-            }else if(thisPerson instanceof Customer){
-                ((Customer)thisPerson).setCustumerID(Integer.parseInt(idNr.getText()));
-            }
-                thisPerson.setFirstName(firstName.getText());
-                thisPerson.setLastName(lastName.getText());
-                thisPerson.setStreet(street.getText());
-                thisPerson.setHouseNr(Integer.parseInt(houseNr.getText()));
-                thisPerson.setCity(city.getText());
-                thisPerson.setZipCode(zipCode.getText());
-                thisPerson.setBirthDay(birthdayDate.getValue());
-                thisPerson.setPin(Integer.parseInt(pin.getText()));
-                thisPerson.setBankAccountID(bankAccount.getText());
-                thisPerson.setEmailAddress(email.getText());
-                thisPerson.setGender(gender.getText());
-
-
-                dPinstance.createEntry(thisPerson);
+                //All fields get filled
+                setPersonReady(thisPerson);
+                //writes person to DB
+            dPinstance.createEntry(thisPerson);
                 //dPinstance.getInstance().createEntry(thisPerson);
 
             //clear fields after person is added to database
-           idNr.clear();gender.clear();firstName.clear();lastName.clear();street.clear();houseNr.clear();zipCode.clear();birthdayDate.setValue(null);
-                        city.clear();bankAccount.clear();email.clear(); pin.clear();
-                alerttext.setText("");
-                //birthdayDate.
-            menuButton.setText("Create Account of type");
+           clearFields();
 
 
         }});
@@ -147,11 +198,38 @@ public class AdministratorScene {
         return scene;
     }
 
-    private static MenuButton geteditableEntries() {
-        MenuButton x = new MenuButton("Selecteer een persoon");
-        return x;
-
+    private static void clearFields() {
+        //clear fields after person is added to database
+        idNr.clear();gender.clear();firstName.clear();lastName.clear();street.clear();houseNr.clear();zipCode.clear();birthdayDate.setValue(null);birthdayDate.setPromptText("");
+        city.clear();bankAccount.clear();email.clear(); pin.clear();
+        alerttext.setText("");
+        //birthdayDate.
+        menuButton.setText("Create Account of type");
     }
+
+    private static void setPersonReady(Person thisPerson) {
+
+        if(thisPerson instanceof Administrator){
+            ((Administrator)thisPerson).setAdministratorID(Integer.parseInt(idNr.getText()));
+
+        }else if(thisPerson instanceof Trainer){
+            ((Trainer)thisPerson).setEmployeeId(Integer.parseInt(idNr.getText()));
+        }else if(thisPerson instanceof Customer){
+            ((Customer)thisPerson).setCustumerID(Integer.parseInt(idNr.getText()));
+        }
+        thisPerson.setFirstName(firstName.getText());
+        thisPerson.setLastName(lastName.getText());
+        thisPerson.setStreet(street.getText());
+        thisPerson.setHouseNr(Integer.parseInt(houseNr.getText()));
+        thisPerson.setCity(city.getText());
+        thisPerson.setZipCode(zipCode.getText());
+        thisPerson.setBirthDay(birthdayDate.getValue());
+        thisPerson.setPin(Integer.parseInt(pin.getText()));
+        thisPerson.setBankAccountID(bankAccount.getText());
+        thisPerson.setEmailAddress(email.getText());
+        thisPerson.setGender(gender.getText());
+    }
+
 
     private static Person getPType() {
         if (type == 1)
@@ -163,5 +241,10 @@ public class AdministratorScene {
         else return null;
     }
 
+    private static Person getEditablePerson(int pin){
+        DataPersister dPinstance = DataPersister.getInstance();
+        Person editablePerson = getPType();
+        return editablePerson;
+    }
 
 }

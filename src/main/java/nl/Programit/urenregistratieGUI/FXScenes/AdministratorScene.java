@@ -125,7 +125,7 @@ public class AdministratorScene {
         update.setOnAction(event -> {
             int pinToCheck = Integer.parseInt(customerToEditField.getText());
 
-            Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
+            Person thisPerson;// = DataPersister.getInstance().retrieveEntry(pinToCheck);
 
             if(menuButton.getText().equals("Create Account of type")) {
                 alerttext.setText("Selecteer eerst juiste account type!");

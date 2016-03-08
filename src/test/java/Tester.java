@@ -48,10 +48,12 @@ public class Tester {
         baddi2.setAdministratorID(1);
         baddi2.setCity("Venlo");
 
+        Customer
+
 
         dP.updateEntry(baddi2);
 
-        dP.deleteEntry(mark);
+        //dP.deleteEntry(mark);
 
         //print entire database:
         dP.printDatabase();

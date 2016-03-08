@@ -1,22 +1,21 @@
 package nl.Programit.urenregistratieGUI;
 
 
-import javafx.application.Application;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import nl.Programit.urenregistratieGUI.FXComponents.MyButton;
-import nl.Programit.urenregistratieGUI.FXScenes.LoginScene;
+import javafx.application.*;
+import javafx.stage.*;
+import nl.Programit.urenregistratieGUI.FXComponents.*;
+import nl.Programit.urenregistratieGUI.FXScenes.*;
 
 public class Main extends Application {
 
 
-    private static Stage window = new Stage();
+    private static Stage window;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
 
-        //primaryStage = window;
+        window = primaryStage;
 
         window.setTitle("ProgramIT - SX_Sport");
         window.setScene(LoginScene.getLoginScene(window));

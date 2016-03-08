@@ -120,6 +120,7 @@ public class DataPersister {
     public void updateEntry(Person p){
         ArrayList<String> inputLines = databaseCopy();
         String newDatabase = "";
+        System.out.println(p.getPin());
 
         if (inputLines == null)
             return;

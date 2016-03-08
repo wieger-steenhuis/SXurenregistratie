@@ -55,5 +55,7 @@ public class Tester {
 
         //print entire database:
         dP.printDatabase();
+
+        System.out.println(dP.retrieveEntry(1234));
     }
 }

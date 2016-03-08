@@ -126,6 +126,8 @@ public class DataPersister {
 
         for (int i = 0; i<inputLines.size(); i++) {
             if (Integer.parseInt(inputLineToString(inputLines.get(i), "<pin>>", "#")) == p.getPin()) {
+                System.out.println(p.getPin()); //CONTROLE
+                System.out.println(inputLineToString(inputLines.get(i), "<pin>>", "#"));//CONTROLE
                 inputLines.set(i, createUpdatedEntryLine(p, inputLineToString(inputLines.get(i), "<eNR>>", "<fNm>>")));
                 break;
             }
@@ -145,7 +147,6 @@ public class DataPersister {
             return;
 
         for (int i = 0; i<inputLines.size(); i++) {
-            //System.out.println(inputLine.substring(inputLine.lastIndexOf('>')+1, inputLine.lastIndexOf('>')+5));
             if (Integer.parseInt(inputLineToString(inputLines.get(i), "<pin>>", "#")) == p.getPin()) {
                 inputLines.set(i, "0");
                 break;

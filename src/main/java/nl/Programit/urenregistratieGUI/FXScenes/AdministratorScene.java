@@ -16,7 +16,11 @@ public class AdministratorScene {
 
     private static  Person thisPerson;
     private static int type = 0;
-    private static VBox AccountVBox;
+    private static VBox AccountVBox1;
+    private static VBox AccountVBox2;
+    private static VBox AccountVBox3;
+    private static VBox AccountTopVBox;
+
     private static MyText alerttext = new MyText("", Color.CRIMSON);
     private static MenuButton menuButton = new MenuButton("Create Account of type");
 
@@ -42,16 +46,17 @@ public class AdministratorScene {
 
         //menuButton and event to set PersonType
 
-        Button customertoEditButton = new Button("Vind");
-        TextField customerToEditField = new TextField();
-        customerToEditField.setPromptText("Account Pin");
+        MyButton customertoEditButton = new MyButton("Vind");
+        MyTextField customerToEditField = new MyTextField("Account Pin");
         HBox editCustomer = new HBox(customerToEditField,customertoEditButton);
+        editCustomer.setAlignment(Pos.CENTER);
         MenuItem klant = new MenuItem("Klant");
         MenuItem trainer = new MenuItem("Trainer");
         MenuItem admin = new MenuItem("Administrator");
 
         //menubutton en menuItems
         menuButton.getItems().addAll(klant, trainer, admin);
+        menuButton.setStyle("-fx-font: 22 italic; -fx-base: #993333; " );
 
         klant.setOnAction(e -> {
             type = 1;
@@ -80,16 +85,18 @@ public class AdministratorScene {
 
         //ActionEvents various buttons
         createAccount.setOnAction(event1 -> {
-            AccountVBox.getChildren().clear();
-            AccountVBox.getChildren().addAll(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
-                    city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
+            AccountTopVBox.getChildren().clear();
+            AccountTopVBox.getChildren().add(menuButton);
+            AccountVBox3.getChildren().clear();
+            AccountVBox3.getChildren().addAll(confirmB,alerttext);
             confirmB.setText("Bevestig");
         });
         editAccount.setOnAction(event1 -> {
-            AccountVBox.getChildren().clear();
-            AccountVBox.getChildren().addAll(editCustomer, menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
-                    city,birthdayDate,bankAccount,email, pin,update,alerttext, delete);
-            //confirmB.setText("Update");
+            AccountTopVBox.getChildren().clear();
+            AccountTopVBox.getChildren().addAll(editCustomer,menuButton);
+            AccountVBox3.getChildren().clear();
+            AccountVBox3.getChildren().addAll(update,alerttext, delete);
+
 
         });
 
@@ -185,18 +192,30 @@ public class AdministratorScene {
         VBox elements = new VBox(welkomText);
 
         //left side Vbox Basic Menu options
-        VBox menuVBox = new VBox(elements, logout, createAccount,editAccount);
+        VBox menuVBox = new VBox(10,logout, createAccount,editAccount);
+        logout.setMinWidth(180);
+        //logout.setStyle("-fx-text-alignment: center");
         logout.setAlignment(Pos.TOP_LEFT);
         createAccount.setAlignment(Pos.CENTER_RIGHT);
 
         //center VBox createAccount and Attributes
-        AccountVBox = new VBox(menuButton, idNr,gender, firstName,lastName,street,houseNr,zipCode,
-                city,birthdayDate,bankAccount,email, pin,confirmB,alerttext);
-        AccountVBox.setSpacing(15);
-        AccountVBox.setAlignment(Pos.CENTER);
+        AccountVBox1 = new VBox(15,idNr,gender, firstName,lastName,street,houseNr);
+        AccountVBox2 = new VBox(15,zipCode,city,birthdayDate,bankAccount,email, pin);
+        AccountVBox3 =new VBox(15,confirmB,alerttext);
+        AccountVBox3.setAlignment(Pos.CENTER);
+        AccountTopVBox = new VBox(15,menuButton);
+        AccountTopVBox.setAlignment(Pos.CENTER);
+        HBox AccountHBox = new HBox(AccountVBox1,AccountVBox2);
+        AccountHBox.setAlignment(Pos.CENTER);
+        AccountHBox.setSpacing(30);
+        VBox fullAccount = new VBox(15,AccountTopVBox,AccountHBox,AccountVBox3);
+        //fullAccount.setStyle("-fx-background-color: aliceblue");
+
 
         // bring all elements together :)
-        HBox fullbox = new HBox(menuVBox, AccountVBox);
+        VBox fullbox = new VBox(menuVBox, fullAccount);
+        menuVBox.setAlignment(Pos.TOP_LEFT);
+        fullAccount.setAlignment(Pos.CENTER);
         Scene scene = new Scene(fullbox);
         return scene;
     }

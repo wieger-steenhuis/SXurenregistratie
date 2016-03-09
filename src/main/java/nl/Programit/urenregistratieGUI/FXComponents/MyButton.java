@@ -16,9 +16,9 @@ public  class MyButton extends Button{
 
     public MyButton(String a){
         setText(a);
-        //setTextFill( Color.WHITE );
-        //minWidth(200.0);
-        //setStyle( "-fx-font: 22 italic; -fx-base: #000000; " );
+        setTextFill( Color.WHITE );
+        setMinWidth(180.0);
+        setStyle( "-fx-font: 22 italic; -fx-base: #333333; " );
 
     }
 

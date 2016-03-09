@@ -4,6 +4,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
@@ -45,10 +47,10 @@ public class LoginScene {
         Button enterButton = new Button("ENTER");
 
         clearButton.setMinSize(80, 80);
-        clearButton.setStyle("-fx-base:firebrick; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 18px Calibri; -fx-text-fill: yellow;");
+        clearButton.setStyle("-fx-base:#ec008e; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 18px Calibri; -fx-text-fill: white;");
         clearButton.setOnAction(event -> pincodeField.clear());
         enterButton.setMinSize(80, 80);
-        enterButton.setStyle("-fx-base:darkgreen; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 18px Calibri; -fx-text-fill: yellow;");
+        enterButton.setStyle("-fx-base:#82BD02; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 18px Calibri; -fx-text-fill: white;");
 
         enterButton.setOnAction(event -> {
             window.setWidth(width);
@@ -114,7 +116,19 @@ public class LoginScene {
 
         loginFullbox.getChildren().addAll(row0, row1, row2, row3, row4, row5);
 
-        Scene loginScene = new Scene(loginFullbox);
+        StackPane achtergrond1 = new StackPane();
+        Scene loginScene = new Scene(achtergrond1);
+
+        Image image = new Image("IMG_3241.jpg");
+        ImageView imageSX = new ImageView();
+        imageSX.setImage(image);
+        imageSX.isPreserveRatio();
+        imageSX.fitWidthProperty().bind(loginScene.widthProperty());
+        imageSX.fitHeightProperty().bind(loginScene.heightProperty());
+
+        //onderliggend veld, dual layer
+        achtergrond1.getChildren().addAll(imageSX,loginFullbox);
+
 
         return loginScene;
     }
@@ -124,7 +138,7 @@ public class LoginScene {
         for (int index = 0; index < 10; index++) {
             numberButtons[index] = (new NumberButton(index));
             numberButtons[index].setMinSize(80, 80);
-            numberButtons[index].setStyle("-fx-base:#444444; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 22px Calibri; -fx-text-fill: yellow;");
+            numberButtons[index].setStyle("-fx-base:#444444; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 22px Calibri; -fx-text-fill: white;");
         }
         return numberButtons;
 

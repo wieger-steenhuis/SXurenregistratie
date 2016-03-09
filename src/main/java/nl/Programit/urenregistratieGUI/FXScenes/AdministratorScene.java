@@ -3,6 +3,8 @@ package nl.Programit.urenregistratieGUI.FXScenes;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import nl.Programit.urenregistratieGUI.FXComponents.*;
@@ -49,6 +51,7 @@ public class AdministratorScene {
         MyButton customertoEditButton = new MyButton("Vind");
         MyTextField customerToEditField = new MyTextField("Account Pin");
         HBox editCustomer = new HBox(customerToEditField,customertoEditButton);
+        editCustomer.setSpacing(10);
         editCustomer.setAlignment(Pos.CENTER);
         MenuItem klant = new MenuItem("Klant");
         MenuItem trainer = new MenuItem("Trainer");
@@ -56,7 +59,7 @@ public class AdministratorScene {
 
         //menubutton en menuItems
         menuButton.getItems().addAll(klant, trainer, admin);
-        menuButton.setStyle("-fx-font: 22 italic; -fx-base: #993333; " );
+        menuButton.setStyle("-fx-font: 20 italic; -fx-base: #ec008e; " );
 
         klant.setOnAction(e -> {
             type = 1;
@@ -77,8 +80,12 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
+        confirmB.setStyle("-fx-font: 20 italic; -fx-base: #82BD02");
         MyButton update = new MyButton("Update");
+        update.setStyle("-fx-font: 20 italic; -fx-base: #82BD02");
         MyButton delete = new MyButton("Delete Account");
+        delete.setStyle("-fx-font: 20 italic; -fx-base: #ff0000");
+        birthdayDate.setStyle("-fx-font: 20 italic");
 
 
 
@@ -211,12 +218,25 @@ public class AdministratorScene {
         VBox fullAccount = new VBox(15,AccountTopVBox,AccountHBox,AccountVBox3);
         //fullAccount.setStyle("-fx-background-color: aliceblue");
 
+        StackPane achtergrond2 = new StackPane();
+        Scene scene = new Scene(achtergrond2);
+
+        Image image = new Image("IMG_3242.jpg");
+        ImageView imageSX = new ImageView();
+        imageSX.setImage(image);
+        imageSX.isPreserveRatio();
+        imageSX.fitWidthProperty().bind(scene.widthProperty());
+        imageSX.fitHeightProperty().bind(scene.heightProperty());
+
+        //onderliggend veld, dual layer
+
 
         // bring all elements together :)
         VBox fullbox = new VBox(menuVBox, fullAccount);
         menuVBox.setAlignment(Pos.TOP_LEFT);
         fullAccount.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(fullbox);
+        achtergrond2.getChildren().addAll(imageSX,fullbox);
+
         return scene;
     }
 

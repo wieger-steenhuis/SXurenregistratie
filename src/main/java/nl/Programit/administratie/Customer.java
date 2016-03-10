@@ -1,4 +1,4 @@
-package nl.Programit.administratie;
+package nl.programit.administratie;
 
 public class Customer extends Person {
 	private int custumerID;

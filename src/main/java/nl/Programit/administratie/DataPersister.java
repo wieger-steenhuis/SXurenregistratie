@@ -1,9 +1,11 @@
-package nl.Programit.administratie;
+package nl.programit.administratie;
 
 import java.io.*;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+//TODO
 
 //CRUD Operations to persist data (uses database.txt for testing purposes)
 

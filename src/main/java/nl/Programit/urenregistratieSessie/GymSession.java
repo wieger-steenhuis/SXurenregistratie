@@ -1,8 +1,8 @@
 
-package nl.Programit.urenregistratieSessie;
+package nl.programit.urenregistratieSessie;
 import java.util.Date;
 import java.util.List;
-import nl.Programit.administratie.*;
+import nl.programit.administratie.*;
 
 public class GymSession implements SessionManageable {
 	private String name;

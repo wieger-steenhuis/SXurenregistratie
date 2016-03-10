@@ -1,4 +1,4 @@
-package nl.Programit.urenregistratieSessie;
+package nl.programit.urenregistratieSessie;
 
 import java.text.*;
 import java.util.*;

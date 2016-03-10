@@ -1,4 +1,4 @@
-package nl.Programit.administratie;
+package nl.programit.administratie;
 
 public class SportSessie {
 	private int trainer;//empId van de trainer

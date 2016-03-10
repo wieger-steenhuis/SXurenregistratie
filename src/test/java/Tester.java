@@ -1,4 +1,4 @@
-import nl.Programit.administratie.*;
+import nl.programit.administratie.*;
 
 public class Tester {
 

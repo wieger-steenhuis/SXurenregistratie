@@ -1,4 +1,4 @@
-package nl.Programit.administratie;
+package nl.programit.administratie;
 
 import java.time.LocalDate;
 

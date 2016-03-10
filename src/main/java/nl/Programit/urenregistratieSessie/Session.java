@@ -1,6 +1,6 @@
-package nl.Programit.urenregistratieSessie;
+package nl.programit.urenregistratieSessie;
 
-import nl.Programit.administratie.*;
+import nl.programit.administratie.*;
 import java.util.Date;
 
 public class Session {

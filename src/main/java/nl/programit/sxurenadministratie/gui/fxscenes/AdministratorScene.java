@@ -1,20 +1,14 @@
 package nl.programit.sxurenadministratie.gui.fxscenes;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
-import nl.programit.sxurenadministratie.gui.fxcomponents.MyDatePicker;
-import nl.programit.sxurenadministratie.gui.fxcomponents.MyText;
-import nl.programit.sxurenadministratie.gui.fxcomponents.MyTextField;
-import nl.programit.urenregistratiegui.fxcomponents.*;
-import nl.programit.sxurenadministratie.gui.Main;
+import javafx.scene.paint.*;
 import nl.programit.administratie.*;
+import nl.programit.sxurenadministratie.gui.*;
+import nl.programit.sxurenadministratie.gui.fxcomponents.*;
 
 /**
  * Created by udr013 on 3-3-2016.
@@ -85,7 +79,7 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
-        MyButton newSessieB = new MyButton("Create Sessie");
+        MyButton newSessieB = new MyButton("Create Session");
         confirmB.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         MyButton update = new MyButton("Update");
         update.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");

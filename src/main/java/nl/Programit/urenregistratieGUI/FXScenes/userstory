@@ -1,8 +1,0 @@
-Adminstrator scene:
-
-selectie person to create
-
-Textfields: idnr, firstname, pin: DataPersistor.getInstance().createEntry(person)
- set(Employee)ID, setFirstName, setPin
-
- retrieve date: RetrieveEntry(person)

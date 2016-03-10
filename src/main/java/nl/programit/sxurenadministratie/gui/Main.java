@@ -5,8 +5,7 @@ import javafx.application.*;
 import javafx.stage.*;
 import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
 import nl.programit.sxurenadministratie.gui.fxscenes.LoginScene;
-import nl.programit.urenregistratiegui.fxcomponents.*;
-import nl.programit.urenregistratiegui.fxscenes.*;
+
 
 public class Main extends Application {
 

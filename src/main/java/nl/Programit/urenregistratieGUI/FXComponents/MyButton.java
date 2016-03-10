@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 
 /**
  * Created by udr013 on 6-2-2016.
- *
  */
 public  class MyButton extends Button{
 
@@ -19,8 +18,7 @@ public  class MyButton extends Button{
         setText(a);
         setTextFill( Color.WHITE );
         setMinWidth(180.0);
-
-        setStyle( "-fx-font: 18px italic; -fx-base: #ec008e;-fx-background-radius: 7; -fx-border-color: deeppink; " +
+        setStyle( "-fx-font: 16px italic; -fx-base: #ec008e;-fx-background-radius: 7; -fx-border-color: deeppink; " +
                 "-fx-progress-color: deeppink; -fx-border-radius: 7" );
 
     }

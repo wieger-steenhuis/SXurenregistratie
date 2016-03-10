@@ -17,7 +17,6 @@ import nl.programit.administratie.*;
 
 import java.time.LocalDate;
 
-
 /**
  * Created by udr013 on 3-3-2016.
  */

@@ -22,7 +22,7 @@ import nl.programit.administratie.*;
 public class AdministratorScene {
 
     private static  Person thisPerson;
-    private static int type = 0;
+    private static String type = "";
     private static VBox AccountVBox1;
     private static VBox AccountVBox2;
     private static VBox AccountVBox3;
@@ -64,18 +64,19 @@ public class AdministratorScene {
 
         //menubutton en menuItems
         menuButton.getItems().addAll(klant, trainer, admin);
+        menuButton.setMinWidth(350);
         menuButton.setStyle("-fx-font:16 italic; -fx-base: #ec008e; ;-fx-background-radius: 7; -fx-border-radius: 7" );
 
         klant.setOnAction(e -> {
-            type = 1;
+            type = "Klant";
             menuButton.setText("Klant");
         });
         trainer.setOnAction(e -> {
-            type = 2;
+            type = "Trainer";
             menuButton.setText("Trainer");
         });
         admin.setOnAction(e -> {
-            type = 3;
+            type = "Administrator";
             menuButton.setText("Administrator");
         });
 
@@ -120,12 +121,18 @@ public class AdministratorScene {
             thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
 
                     if ((thisPerson instanceof Trainer)) {
+                        menuButton.setText("Trainer");
+                        type = "Trainer";
                         idNr.setText(""+((Trainer)thisPerson).getEmployeeId());
 
                     } else if ((thisPerson instanceof Administrator)) {
+                        menuButton.setText("Administrator");
+                        type="Administrator";
                         idNr.setText(""+((Administrator)thisPerson).getAdministratorID());
 
                     } else if ((thisPerson instanceof Customer)) {
+                        menuButton.setText("Klant");
+                        type="Klant";
                         idNr.setText(""+((Customer)thisPerson).getCustumerID());
 
                     }
@@ -283,11 +290,11 @@ public class AdministratorScene {
 
 
     private static Person getPType() {
-        if (type == 1)
+        if (type.equals("Klant"))
             return new Customer();
-        else if (type == 2)
+        else if (type.equals("Trainer"))
             return new Trainer();
-        else if (type == 3)
+        else if (type.equals("Administrator"))
             return new Administrator();
         else return null;
     }

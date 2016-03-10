@@ -65,11 +65,15 @@ public class TrainerScene {
             LocalDate ld = datePicker.getValue();
             controller.retrieveSessionListbyDate(ld);
             ArrayList<MyRadioButton> myRadioButtons = new ArrayList<>();
-            for(Session x:controller.retrieveSessionListbyDate(ld)){
-                MyRadioButton sessieRadioButton = new MyRadioButton(x.toString());
-                myRadioButtons.add(sessieRadioButton);
-                System.out.println("button created: "+ x.toString());
-            }
+            for(Session x:controller.retrieveSessionListbyDate(ld))
+                if (x.isApproved() == false) {
+                    MyRadioButton sessieRadioButton = new MyRadioButton(x.toString());
+                    myRadioButtons.add(sessieRadioButton);
+                }else {
+                    MyRadioButton sessieRadioButton = new MyRadioButton("\u2713 " + x.toString());
+                    myRadioButtons.add(sessieRadioButton);
+
+                }
             for(RadioButton x:myRadioButtons){
                 x.setToggleGroup(sessies);
                 sessionsToday.getChildren().add(x);

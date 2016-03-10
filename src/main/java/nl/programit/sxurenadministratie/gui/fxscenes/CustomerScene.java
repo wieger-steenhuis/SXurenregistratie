@@ -44,12 +44,21 @@ public class CustomerScene {
         ArrayList<MyRadioButton> customerCheckboxes = new ArrayList<>();
 
         for (int x = 1; x < 13; x++) {
-            MyRadioButton y = new MyRadioButton(" Sessie "+x);
+            if(x<5) {
+                MyRadioButton y = new MyRadioButton("\u2713  " + x + "ste Sessie");
+                y.setToggleGroup(sessions);
+                customerCheckboxes.add(y);
+                customerSessionBox.getChildren().add(y);
+            }else{
+                MyRadioButton y = new MyRadioButton("     " + x + "ste Sessie");
+                y.setToggleGroup(sessions);
+                customerCheckboxes.add(y);
+                customerSessionBox.getChildren().add(y);
 
-            y.setToggleGroup(sessions);
-            customerCheckboxes.add(y);
-            customerSessionBox.getChildren().add(y);
-            y.setAlignment(Pos.CENTER);
+            }
+
+
+            //y.setAlignment(Pos.CENTER);
         }
 
         customerSessionBox.setPadding(new Insets(30, 30, 30, 30));

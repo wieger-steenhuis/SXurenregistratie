@@ -46,6 +46,7 @@ public class TrainerScene {
         //create Togglegroup to make only one Radiobutton selectable
         //todo create text fields for first radiobutton text and if possible approved sessions
         MyDatePicker datePicker = new MyDatePicker();
+        datePicker.setValue(LocalDate.now());
         MyButton findButton = new MyButton("vind");
         HBox findSession = new HBox(20,datePicker,findButton);
         findSession.setAlignment(Pos.CENTER);

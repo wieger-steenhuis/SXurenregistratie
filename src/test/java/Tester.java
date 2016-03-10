@@ -5,13 +5,21 @@ import java.time.LocalDate;
 public class Tester {
     public static void main(String[] args) {
         SessionController controller = new SessionController();
-        LocalDate ld = LocalDate.of(2015, 3, 31);
+
+        LocalDate ld = null;//LocalDate.of(2015, 3, 31);
+
         System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS BADDI APPROVED
         controller.approveSession(controller.retrieveSessionListbyDate(ld).get(1), "2222");
         System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS FELIX & BADDI APPROVED
         System.out.println(controller.approveSession(controller.retrieveSessionListbyDate(ld).get(1), "3333"));
         System.out.println(controller.retrieveSessionListbyDate(ld));//wrong pin, no sessions approved
+        System.out.println(controller.approveSession(controller.getSessionForApproval(2), "3333"));//retrieve third session, approve and return TRUE
+        System.out.println(controller.getSessionForApproval(2)); //PRINTS APPROVED SJOERD ONLY
+        System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS SJOERD, FELIX & BADDI APPROVED
 
+        int index = 2;
+        String pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
+        System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
     }
 
 

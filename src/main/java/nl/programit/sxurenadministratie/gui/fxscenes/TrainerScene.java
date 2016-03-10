@@ -26,7 +26,7 @@ public class TrainerScene {
 
     private static VBox sessionsToday;
     private  static ArrayList<MyRadioButton> myRadioButtons;
-    private static SessionController controller;
+    private static SessionController controller = new SessionController();
 
     public static Scene getTrainerScene(Person person) {
 
@@ -63,7 +63,7 @@ public class TrainerScene {
         findButton.setOnAction(event1 -> {
             sessionsToday.getChildren().clear();
             sessionsToday.getChildren().add(findSession);
-            controller = new SessionController();
+            //controller = new SessionController();
             LocalDate ld = datePicker.getValue();
             controller.retrieveSessionListbyDate(ld);
             myRadioButtons = new ArrayList<>();
@@ -97,7 +97,11 @@ public class TrainerScene {
                 } else{
                ((RadioButton)sessies.getSelectedToggle()).setText(approved+((RadioButton)sessies.getSelectedToggle()).getText());
                 int index =myRadioButtons.indexOf((RadioButton)sessies.getSelectedToggle());
-                   controller.getSessionForApproval(index);
+                   System.out.println(controller.getSessionForApproval(index));//CONTROLE PRINT VOOR APPROVAL
+                   //TODO Tweede argument straks vervangen voor de door de klant ingetoetste pincode:
+                   controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin());
+                   System.out.println(controller.getSessionForApproval(index));//CONTROLE PRINT NA APPROVAL
+
 
 
             }}}

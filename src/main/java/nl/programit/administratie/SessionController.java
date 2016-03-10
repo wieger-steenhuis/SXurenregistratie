@@ -5,11 +5,8 @@ import java.util.*;
 
 public class SessionController {
 
-    Session session;
     ArrayList<Session> sessions = new java.util.ArrayList<>();
     DataPersister database = DataPersister.getInstance();
-
-
 
     public SessionController(){
 
@@ -69,8 +66,6 @@ public class SessionController {
         createSession(s5);
     }
 
-
-
     public boolean createSession(Session session) {
         sessions.add(session);
         return true;
@@ -88,11 +83,13 @@ public class SessionController {
         return false;
     }
 
-    public boolean approveSession(Session session){
-
-        return true;
+    public boolean approveSession(Session session, String customerPin){
+        if (session.getCustomer().getPin().equals(customerPin)){
+            session.setApproved(true);
+            session.setApprovedDateAndTime(Calendar.getInstance());//date = now
+            return true;
+        }
+        else return false;
     }
-
-
 }
 

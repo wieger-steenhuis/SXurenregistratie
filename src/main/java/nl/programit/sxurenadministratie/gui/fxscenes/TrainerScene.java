@@ -53,15 +53,9 @@ public class TrainerScene {
         moreSession.setAlignment(Pos.CENTER);
 
         ToggleGroup sessies = new ToggleGroup();
-        MyRadioButton sessie = new MyRadioButton("eerste sessie");
-        sessie.setAlignment(Pos.CENTER_LEFT);
-        sessie.setToggleGroup(sessies);
-        MyRadioButton sessie1 = new MyRadioButton("Tweede sessie");
-        sessie1.setToggleGroup(sessies);
-        MyRadioButton sessie2 = new MyRadioButton("Derde sessie");
-        sessie2.setToggleGroup(sessies);
-        MyRadioButton sessie3 = new MyRadioButton("Vierde sessie");
-        sessie3.setToggleGroup(sessies);
+        MyRadioButton sessie = new MyRadioButton("selecteer een datum en druk op vind om sessies weer te geven");
+
+
 
 
         findButton.setOnAction(event1 -> {
@@ -107,7 +101,7 @@ public class TrainerScene {
         sessionsToday.setPadding(new Insets(30, 30, 30,30));
         sessionsToday.setStyle("-fx-background-color: rgba(221, 214, 214, 0.90);-fx-font: 20 italic;" +
                 "-fx-background-radius: 7; -fx-border-radius: 7");
-        sessionsToday.getChildren().addAll(findSession,sessie,sessie1,sessie2,sessie3,moreSession);
+        sessionsToday.getChildren().addAll(findSession,sessie,moreSession);
 
         VBox centrebox = new VBox(menu,sessionsToday);
 

@@ -2,6 +2,8 @@ package nl.programit.sxurenadministratie.gui.fxscenes;
 
 import javafx.geometry.Pos;
 import javafx.scene.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
@@ -33,7 +35,15 @@ public class CustomerScene {
         fullbox.setFillHeight(true);
 
         elements.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(fullbox);
+        Image image = new Image("IMG_3242.jpg");
+        ImageView imageSX = new ImageView();
+        StackPane achtergrond2 = new StackPane(imageSX,fullbox);
+        Scene scene = new Scene(achtergrond2);
+        imageSX.setImage(image);
+        imageSX.isPreserveRatio();
+        imageSX.fitWidthProperty().bind(scene.widthProperty());
+        imageSX.fitHeightProperty().bind(scene.heightProperty());
+
         return scene;
     }
 

@@ -25,6 +25,8 @@ import java.util.ArrayList;
 public class TrainerScene {
 
     private static VBox sessionsToday;
+    private  static ArrayList<MyRadioButton> myRadioButtons;
+    private static SessionController controller;
 
     public static Scene getTrainerScene(Person person) {
 
@@ -61,10 +63,10 @@ public class TrainerScene {
         findButton.setOnAction(event1 -> {
             sessionsToday.getChildren().clear();
             sessionsToday.getChildren().add(findSession);
-            SessionController controller = new SessionController();
+            controller = new SessionController();
             LocalDate ld = datePicker.getValue();
             controller.retrieveSessionListbyDate(ld);
-            ArrayList<MyRadioButton> myRadioButtons = new ArrayList<>();
+            myRadioButtons = new ArrayList<>();
             for(Session x:controller.retrieveSessionListbyDate(ld))
                 if (x.isApproved() == false) {
                     MyRadioButton sessieRadioButton = new MyRadioButton(x.toString());
@@ -94,6 +96,9 @@ public class TrainerScene {
 
                 } else{
                ((RadioButton)sessies.getSelectedToggle()).setText(approved+((RadioButton)sessies.getSelectedToggle()).getText());
+                int index =myRadioButtons.indexOf((RadioButton)sessies.getSelectedToggle());
+                   controller.getSessionForApproval(index);
+
 
             }}}
 

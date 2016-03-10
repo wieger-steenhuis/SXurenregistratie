@@ -1,14 +1,20 @@
 package nl.programit.sxurenadministratie.gui.fxscenes;
 
-import javafx.geometry.*;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyDatePicker;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyText;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyTextField;
+
+import nl.programit.sxurenadministratie.gui.Main;
 import nl.programit.administratie.*;
-import nl.programit.sxurenadministratie.gui.*;
-import nl.programit.sxurenadministratie.gui.fxcomponents.*;
 
 /**
  * Created by udr013 on 3-3-2016.
@@ -79,7 +85,7 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
-        MyButton newSessieB = new MyButton("Create Session");
+        MyButton newSessieB = new MyButton("Create Sessie");
         confirmB.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         MyButton update = new MyButton("Update");
         update.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
@@ -109,7 +115,7 @@ public class AdministratorScene {
         });
 
         customertoEditButton.setOnAction(event1 -> {
-            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+            String pinToCheck = customerToEditField.getText();
 
             thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
 
@@ -140,7 +146,7 @@ public class AdministratorScene {
         });
 
         update.setOnAction(event -> {
-            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+            String pinToCheck = customerToEditField.getText();
 
             //Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);/// check check
 
@@ -254,21 +260,21 @@ public class AdministratorScene {
     private static Person setPersonReady(Person thisPerson) {
 
         if(thisPerson instanceof Administrator){
-            ((Administrator)thisPerson).setAdministratorID(Integer.parseInt(idNr.getText()));
+            ((Administrator)thisPerson).setAdministratorID(idNr.getText());
 
         }else if(thisPerson instanceof Trainer){
-            ((Trainer)thisPerson).setEmployeeId(Integer.parseInt(idNr.getText()));
+            ((Trainer)thisPerson).setEmployeeId(idNr.getText());
         }else if(thisPerson instanceof Customer){
-            ((Customer)thisPerson).setCustumerID(Integer.parseInt(idNr.getText()));
+            ((Customer)thisPerson).setCustumerID(idNr.getText());
         }
         thisPerson.setFirstName(firstName.getText());
         thisPerson.setLastName(lastName.getText());
         thisPerson.setStreet(street.getText());
-        thisPerson.setHouseNr(Integer.parseInt(houseNr.getText()));
+        thisPerson.setHouseNr(houseNr.getText());
         thisPerson.setCity(city.getText());
         thisPerson.setZipCode(zipCode.getText());
         thisPerson.setBirthDay(birthdayDate.getValue());
-        thisPerson.setPin(Integer.parseInt(pin.getText()));
+        thisPerson.setPin(pin.getText());
         thisPerson.setBankAccountID(bankAccount.getText());
         thisPerson.setEmailAddress(email.getText());
         thisPerson.setGender(gender.getText());

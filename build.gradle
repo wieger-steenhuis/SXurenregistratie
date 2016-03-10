@@ -6,7 +6,7 @@ apply plugin: 'java'
 //sourceCompatibility = 1.5
 jar {
     manifest {
-        attributes "Main-Class": "nl.programit.gui.Main"
+        attributes "Main-Class": "nl.programit.sxurenadministratie.gui.Main"
     }
 //
     repositories {

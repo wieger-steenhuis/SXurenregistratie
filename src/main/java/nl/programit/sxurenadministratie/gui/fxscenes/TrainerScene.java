@@ -36,6 +36,7 @@ public class TrainerScene {
         MyDatePicker datePicker = new MyDatePicker(LocalDate.now());
         MyButton findButton = new MyButton("vind");
         HBox findSession = new HBox(20,datePicker,findButton);
+        findSession.setAlignment(Pos.CENTER);
         ToggleGroup sessies = new ToggleGroup();
         MyRadioButton sessie = new MyRadioButton("eerste sessie");
         sessie.setAlignment(Pos.CENTER_LEFT);
@@ -49,6 +50,7 @@ public class TrainerScene {
 
         //add all radiobuttons to a VBox with 30 spacing for it's elements, can't add Togglegroup as a whole!
         VBox sessionsToday = new VBox(30);
+
         sessionsToday.setPadding(new Insets(30, 30, 30,30));
         sessionsToday.setStyle("-fx-background-color: rgba(221, 214, 214, 0.90);-fx-font: 20 italic;" +
                 "-fx-background-radius: 7; -fx-border-radius: 7");

@@ -6,7 +6,12 @@ public class Tester {
     public static void main(String[] args) {
         SessionController controller = new SessionController();
         LocalDate ld = LocalDate.of(2015, 3, 31);
-        System.out.println(controller.retrieveSessionListbyDate(ld));
+        System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS BADDI APPROVED
+        controller.approveSession(controller.retrieveSessionListbyDate(ld).get(1), "2222");
+        System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS FELIX & BADDI APPROVED
+        System.out.println(controller.approveSession(controller.retrieveSessionListbyDate(ld).get(1), "3333"));
+        System.out.println(controller.retrieveSessionListbyDate(ld));//wrong pin, no sessions approved
+
     }
 
 

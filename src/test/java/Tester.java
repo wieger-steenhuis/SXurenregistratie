@@ -1,7 +1,6 @@
-import nl.programit.administratie.*;
-
 public class Tester {
 
+    /*
     public static void main(String[] args) {
         //create persons (Customer, Trainer and Administrator):
         Administrator baddi = new Administrator();
@@ -62,5 +61,6 @@ public class Tester {
         dP.printDatabase();
 
         System.out.println(dP.retrieveEntry(1234));
-    }
+*/
+
 }

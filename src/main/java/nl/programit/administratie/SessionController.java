@@ -14,15 +14,15 @@ public class SessionController {
     public SessionController(){
 
         Calendar training1 = new GregorianCalendar();
-        training1.set(2015, Calendar.MARCH, 11, 14, 0, 0);
+        training1.set(2016, Calendar.MARCH, 11, 14, 0, 0);
         Calendar training2 = new GregorianCalendar();
-        training2.set(2015, Calendar.MARCH, 11, 15, 0, 0);
+        training2.set(2016, Calendar.MARCH, 11, 15, 0, 0);
         Calendar training3 = new GregorianCalendar();
-        training3.set(2015, Calendar.MARCH, 11, 16, 0, 0);
+        training3.set(2016, Calendar.MARCH, 11, 16, 0, 0);
         Calendar training4 = new GregorianCalendar();
-        training4.set(2015, Calendar.MARCH, 11, 17, 0, 0);
+        training4.set(2016, Calendar.MARCH, 11, 17, 0, 0);
         Calendar training5 = new GregorianCalendar();
-        training5.set(2015, Calendar.MARCH, 11, 18, 0, 0);
+        training5.set(2016, Calendar.MARCH, 11, 18, 0, 0);
 
 
         Person tessa = database.retrieveEntry("9999");
@@ -76,12 +76,8 @@ public class SessionController {
         return true;
     }
 
-    public ArrayList<String> retrieveSessionListbyDate(LocalDate date) {
-        ArrayList<String> sessionsByDate = new ArrayList<>();
-        for (Session a : sessions){
-            sessionsByDate.add(a.toString());
-        }
-        return sessionsByDate;
+    public ArrayList<Session> retrieveSessionListbyDate(LocalDate date) {
+        return sessions;
     }
 
     public boolean updateSession(Session session) {

@@ -1,7 +1,7 @@
 package nl.programit.administratie;
 
 public class Trainer extends Person {
-	private int employeeId;
+	private String employeeId;
 	private int approvedSessions;
 	//private Gym myGym; nog niet zeker of dat nodig is
 	private boolean active;
@@ -9,10 +9,10 @@ public class Trainer extends Person {
 	public void incrementApprovedSessions(int i){
 		approvedSessions += i;
 	}
-	public int getEmployeeId() {
+	public String getEmployeeId() {
 		return employeeId;
 	}
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 	public int getApprovedSessions() {

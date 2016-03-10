@@ -1,7 +1,7 @@
 package nl.programit.administratie;
 
 public class Customer extends Person {
-	private int custumerID;
+	private String custumerID;
 	private int credits;
 	//private Subscription mySubscription; nog niet zeker of dat nodig is
 	//private Gym mijnSportShool; nog niet zeker of dat nodig is
@@ -13,11 +13,11 @@ public class Customer extends Person {
 		credits--;
 	}
 
-	public int getCustumerID() {
+	public String getCustumerID() {
 		return custumerID;
 	}
 
-	public void setCustumerID(int custumerID) {
+	public void setCustumerID(String custumerID) {
 		this.custumerID = custumerID;
 	}
 
@@ -35,8 +35,4 @@ public class Customer extends Person {
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
-
-
-
-
 }

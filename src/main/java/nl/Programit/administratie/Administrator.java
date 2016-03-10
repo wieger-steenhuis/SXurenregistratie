@@ -1,13 +1,13 @@
 package nl.programit.administratie;
 
 public class Administrator extends Person {
-    private int administratorID;
+    private String administratorID;
 
-    public int getAdministratorID() {
+    public String getAdministratorID() {
         return administratorID;
     }
 
-    public void setAdministratorID(int administratorID) {
+    public void setAdministratorID(String administratorID) {
         this.administratorID = administratorID;
     }
 }

@@ -9,10 +9,10 @@ public abstract class Person {
 	private String street;
 	private String zipCode;
 	private String city;
-	private int houseNr;
+	private String houseNr;
 	private LocalDate birthDay;
 	private String bankAccountID;
-	private int pin;
+	private String pin;
 	private String emailAddress;
 	private String gender;
 
@@ -34,10 +34,10 @@ public abstract class Person {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public int getPin() {
+	public String getPin() {
 		return pin;
 	}
-	public void setPin(int pin) {
+	public void setPin(String pin) {
 		this.pin = pin;
 	}
 	public String getFirstName() {
@@ -70,10 +70,10 @@ public abstract class Person {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getHouseNr() {
+	public String getHouseNr() {
 		return houseNr;
 	}
-	public void setHouseNr(int houseNr) {
+	public void setHouseNr(String houseNr) {
 		this.houseNr = houseNr;
 	}
 	public LocalDate getBirthDay() {

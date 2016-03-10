@@ -74,7 +74,7 @@ public class DataPersister {
     }
 
     // retrieve entry (overloaded with pin and firstname parameter)
-    public Person retrieveEntry(int pin){
+    public Person retrieveEntry(String pin){
 
         ArrayList<String> inputLines = databaseCopy();
 
@@ -82,20 +82,20 @@ public class DataPersister {
             return null;
 
         for (String inputLine : inputLines){
-            if (inputLine.charAt(1)=='c' && Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
+            if (inputLine.charAt(1)=='c' && (inputLineToString(inputLine, "<pin>>", "#")).equals(pin)){
                 return createCustomer(inputLine);
             }
-            else if (inputLine.charAt(1)=='a' && Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
+            else if (inputLine.charAt(1)=='a' && (inputLineToString(inputLine, "<pin>>", "#")).equals(pin)){
                 return createAdministrator(inputLine);
             }
-            else if (inputLine.charAt(1)=='t'&& Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#"))==pin){
+            else if (inputLine.charAt(1)=='t'&& (inputLineToString(inputLine, "<pin>>", "#")).equals(pin)){
                 return createTrainer(inputLine);
             }
         }
         return null;
     }
 
-    public Person retrieveEntry(String firstName){
+   /* public Person retrieveEntry(String firstName){
         ArrayList<String> inputLines = databaseCopy();
 
         if (inputLines == null)
@@ -115,10 +115,10 @@ public class DataPersister {
             }
         }
         return null;
-    }
+    }*/
 
     //Update entry copies entire database to String, replaces entry and copies String back to txt-file:
-    public void updateEntry(Person p, int pinToCheck){
+    public void updateEntry(Person p, String pinToCheck){
         ArrayList<String> inputLines = databaseCopy();
         String newDatabase = "";
 
@@ -126,7 +126,7 @@ public class DataPersister {
             return;
 
         for (int i = 0; i<inputLines.size(); i++) {
-            if (Integer.parseInt(inputLineToString(inputLines.get(i), "<pin>>", "#")) == pinToCheck) {
+            if ((inputLineToString(inputLines.get(i), "<pin>>", "#")).equals(pinToCheck)) {
                 inputLines.set(i, createUpdatedEntryLine(p, inputLineToString(inputLines.get(i), "<eNR>>", "<fNm>>")));
                 break;
             }
@@ -146,7 +146,7 @@ public class DataPersister {
             return;
 
         for (int i = 0; i<inputLines.size(); i++) {
-            if (Integer.parseInt(inputLineToString(inputLines.get(i), "<pin>>", "#")) == p.getPin()) {
+            if ((inputLineToString(inputLines.get(i), "<pin>>", "#")).equals(p.getPin())) {
                 inputLines.set(i, "0");
                 break;
             }
@@ -188,47 +188,47 @@ public class DataPersister {
     // creation of persons
     private Customer createCustomer(String inputLine){
         Customer retrieved = new Customer();
-        retrieved.setCustumerID(Integer.parseInt(inputLineToString(inputLine, "<cID>>", "<eNR>>")));
+        retrieved.setCustumerID (inputLineToString(inputLine, "<cID>>", "<eNR>>"));
         retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
         retrieved.setLastName(inputLineToString(inputLine, "<lNm>>", "<gdr>>"));
         retrieved.setGender(inputLineToString(inputLine, "<gdr>>", "<str>>"));
         retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
-        retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
+        retrieved.setHouseNr(inputLineToString(inputLine, "<hNr>>", "<zip>>"));
         retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
         retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<eml>>"));
         retrieved.setEmailAddress(inputLineToString(inputLine, "<eml>>", "<bDy>>"));
         retrieved.setBirthdayStringInput(inputLineToString(inputLine, "<bDy>>", "<pin>>"));
-        retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+        retrieved.setPin(inputLineToString(inputLine, "<pin>>", "#"));
         return retrieved;
     }
     private Administrator createAdministrator(String inputLine){
         Administrator retrieved = new Administrator();
-        retrieved.setAdministratorID(Integer.parseInt(inputLineToString(inputLine, "<aID>>", "<eNR>>")));
+        retrieved.setAdministratorID(inputLineToString(inputLine, "<aID>>", "<eNR>>"));
         retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
         retrieved.setLastName(inputLineToString(inputLine, "<lNm>>", "<gdr>>"));
         retrieved.setGender(inputLineToString(inputLine, "<gdr>>", "<str>>"));
         retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
-        retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
+        retrieved.setHouseNr(inputLineToString(inputLine, "<hNr>>", "<zip>>"));
         retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
         retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<eml>>"));
         retrieved.setEmailAddress(inputLineToString(inputLine, "<eml>>", "<bDy>>"));
         retrieved.setBirthdayStringInput(inputLineToString(inputLine, "<bDy>>", "<pin>>"));
-        retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+        retrieved.setPin(inputLineToString(inputLine, "<pin>>", "#"));
         return retrieved;
     }
     private Trainer createTrainer(String inputLine){
         Trainer retrieved = new Trainer();
-        retrieved.setEmployeeId(Integer.parseInt(inputLineToString(inputLine, "<tID>>", "<eNR>>")));
+        retrieved.setEmployeeId(inputLineToString(inputLine, "<tID>>", "<eNR>>"));
         retrieved.setFirstName(inputLineToString(inputLine, "<fNm>>", "<lNm>>"));
         retrieved.setLastName(inputLineToString(inputLine, "<lNm>>", "<gdr>>"));
         retrieved.setGender(inputLineToString(inputLine, "<gdr>>", "<str>>"));
         retrieved.setStreet(inputLineToString(inputLine, "<str>>", "<hNr>>"));
-        retrieved.setHouseNr(Integer.parseInt(inputLineToString(inputLine, "<hNr>>", "<zip>>")));
+        retrieved.setHouseNr(inputLineToString(inputLine, "<hNr>>", "<zip>>"));
         retrieved.setZipCode(inputLineToString(inputLine, "<zip>>", "<cty>>"));
         retrieved.setCity(inputLineToString(inputLine, "<cty>>", "<eml>>"));
         retrieved.setEmailAddress(inputLineToString(inputLine, "<eml>>", "<bDy>>"));
         retrieved.setBirthdayStringInput(inputLineToString(inputLine, "<bDy>>", "<pin>>"));
-        retrieved.setPin(Integer.parseInt(inputLineToString(inputLine, "<pin>>", "#")));
+        retrieved.setPin(inputLineToString(inputLine, "<pin>>", "#"));
         return retrieved;
     }
 

@@ -1,9 +1,8 @@
-package nl.Programit.urenregistratieGUI.FXComponents;
+package nl.programit.urenregistratiegui.fxcomponents;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 
 /**
  * Created by udr013 on 27-2-2016.

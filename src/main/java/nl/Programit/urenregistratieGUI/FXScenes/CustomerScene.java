@@ -1,12 +1,12 @@
-package nl.Programit.urenregistratieGUI.FXScenes;
+package nl.programit.urenregistratiegui.fxscenes;
 
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
-import nl.Programit.urenregistratieGUI.FXComponents.MyButton;
-import nl.Programit.urenregistratieGUI.Main;
-import nl.Programit.administratie.*;
+import nl.programit.urenregistratiegui.fxcomponents.MyButton;
+import nl.programit.urenregistratiegui.Main;
+import nl.programit.administratie.*;
 
 /**
  * Created by udr013 on 3-3-2016.

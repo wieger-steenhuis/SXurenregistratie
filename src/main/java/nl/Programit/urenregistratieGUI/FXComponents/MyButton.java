@@ -1,4 +1,4 @@
-package nl.Programit.urenregistratieGUI.FXComponents;
+package nl.programit.urenregistratiegui.fxcomponents;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;

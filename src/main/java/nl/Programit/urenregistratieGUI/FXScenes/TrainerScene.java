@@ -1,24 +1,21 @@
-package nl.Programit.urenregistratieGUI.FXScenes;
+package nl.programit.urenregistratiegui.fxscenes;
 
 
-import com.sun.javafx.menu.RadioMenuItemBase;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
-import nl.Programit.urenregistratieGUI.FXComponents.MyButton;
-import nl.Programit.urenregistratieGUI.FXComponents.MyRadioButton;
-import nl.Programit.urenregistratieGUI.Main;
-import nl.Programit.administratie.*;
-import nl.Programit.urenregistratieSessie.Session;
+import nl.programit.urenregistratiegui.fxcomponents.MyButton;
+import nl.programit.urenregistratiegui.fxcomponents.MyDatePicker;
+import nl.programit.urenregistratiegui.fxcomponents.MyRadioButton;
+import nl.programit.urenregistratiegui.Main;
+import nl.programit.administratie.*;
 
-import javax.swing.*;
+import java.time.LocalDate;
 
 /**
  * Created by udr013 on 3-3-2016.
@@ -36,6 +33,9 @@ public class TrainerScene {
         VBox menu = new VBox(logout);
 
         //create Togglegroup to make only one Radiobutton selectable
+        MyDatePicker datePicker = new MyDatePicker(LocalDate.now());
+        MyButton findButton = new MyButton("vind");
+        HBox findSession = new HBox(20,datePicker,findButton);
         ToggleGroup sessies = new ToggleGroup();
         MyRadioButton sessie = new MyRadioButton("eerste sessie");
         sessie.setAlignment(Pos.CENTER_LEFT);
@@ -52,11 +52,12 @@ public class TrainerScene {
         sessionsToday.setPadding(new Insets(30, 30, 30,30));
         sessionsToday.setStyle("-fx-background-color: rgba(221, 214, 214, 0.90);-fx-font: 20 italic;" +
                 "-fx-background-radius: 7; -fx-border-radius: 7");
-        sessionsToday.getChildren().addAll(sessie,sessie1,sessie2,sessie3);
+        sessionsToday.getChildren().addAll(findSession,sessie,sessie1,sessie2,sessie3);
 
         VBox centrebox = new VBox(menu,sessionsToday);
 
         menu.setAlignment(Pos.TOP_LEFT);
+        menu.setPadding(new Insets(0,30,150,0));
         sessionsToday.setAlignment(Pos.CENTER);
         //centrebox.setAlignment(Pos.CENTER);
         //VBox fullbox = new VBox(menu,centrebox);

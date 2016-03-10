@@ -1,5 +1,5 @@
 
-package nl.programit.urenregistratieSessie;
+package nl.programit.urenregistratiesessie;
 import java.util.Date;
 import java.util.List;
 import nl.programit.administratie.*;

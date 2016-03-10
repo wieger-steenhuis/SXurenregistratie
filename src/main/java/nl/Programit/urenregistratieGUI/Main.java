@@ -1,10 +1,10 @@
-package nl.Programit.urenregistratieGUI;
+package nl.programit.urenregistratiegui;
 
 
 import javafx.application.*;
 import javafx.stage.*;
-import nl.Programit.urenregistratieGUI.FXComponents.*;
-import nl.Programit.urenregistratieGUI.FXScenes.*;
+import nl.programit.urenregistratiegui.fxcomponents.*;
+import nl.programit.urenregistratiegui.fxscenes.*;
 
 public class Main extends Application {
 

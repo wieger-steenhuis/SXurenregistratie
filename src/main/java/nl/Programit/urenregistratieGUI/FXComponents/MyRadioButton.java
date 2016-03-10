@@ -9,7 +9,7 @@ public class MyRadioButton extends RadioButton {
 
     public MyRadioButton(){
         super();
-        setStyle("-fx-font: 20 italic;-fx-mark-highlight-color: #ec008e ;-fx-mark-color: #ec008e;" +
+        setStyle("-fx-font: 16 italic;-fx-mark-highlight-color: #ec008e ;-fx-mark-color: #ec008e;" +
                 "-fx-focus-color:#ec008e; -fx-outer-border:#ec008e");
     }
     public MyRadioButton(String text){

@@ -12,9 +12,10 @@ import java.util.Calendar;
 public class Session {
     private Trainer trainer;
     private Customer customer;
-    private Calendar DateAndTime;
+    private Calendar sessionDateAndTime;
     private boolean approved;
     private double duration;
+    private Calendar approvedDateAndTime;
 
     public Trainer getTrainer() {
         return trainer;
@@ -28,12 +29,23 @@ public class Session {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    public Calendar getDateAndTime() {
-        return DateAndTime;
+
+    public Calendar getSessionDateAndTime() {
+        return sessionDateAndTime;
     }
-    public void setDateAndTime(Calendar dateAndTime) {
-        DateAndTime = dateAndTime;
+
+    public void setSessionDateAndTime(Calendar sessionDateAndTime) {
+        this.sessionDateAndTime = sessionDateAndTime;
     }
+
+    public Calendar getApprovedDateAndTime() {
+        return approvedDateAndTime;
+    }
+
+    public void setApprovedDateAndTime(Calendar approvedDateAndTime) {
+        this.approvedDateAndTime = approvedDateAndTime;
+    }
+
     public boolean isApproved() {
         return approved;
     }
@@ -49,6 +61,6 @@ public class Session {
 
     @Override
     public String toString() {
-        return customer.getFirstName()+" "+customer.getLastName()+" "+getDateAndTime().getTime().toString();
+        return customer.getFirstName()+" "+customer.getLastName()+" "+getSessionDateAndTime().getTime().toString();
     }
 }

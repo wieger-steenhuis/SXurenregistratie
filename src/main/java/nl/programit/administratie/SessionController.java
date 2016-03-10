@@ -36,31 +36,31 @@ public class SessionController {
         s1.setTrainer((Trainer)tessa);
         s1.setCustomer((Customer)baddi);
         s1.setApproved(true);
-        s1.setDateAndTime(training1);
+        s1.setSessionDateAndTime(training1);
 
         Session s2 = new Session();
         s2.setTrainer((Trainer)tessa);
         s2.setCustomer((Customer)felix);
         s2.setApproved(false);
-        s2.setDateAndTime(training2);
+        s2.setSessionDateAndTime(training2);
 
         Session s3 = new Session();
         s3.setTrainer((Trainer)tessa);
         s3.setCustomer((Customer)sjoerd);
         s3.setApproved(false);
-        s3.setDateAndTime(training3);
+        s3.setSessionDateAndTime(training3);
 
         Session s4 = new Session();
         s4.setTrainer((Trainer)tessa);
         s4.setCustomer((Customer)ger);
         s4.setApproved(false);
-        s4.setDateAndTime(training4);
+        s4.setSessionDateAndTime(training4);
 
         Session s5 = new Session();
         s5.setTrainer((Trainer)tessa);
         s5.setCustomer((Customer)aaron);
         s5.setApproved(false);
-        s5.setDateAndTime(training5);
+        s5.setSessionDateAndTime(training5);
 
         createSession(s1);
         createSession(s2);
@@ -87,5 +87,12 @@ public class SessionController {
     public boolean deleteSession(Session session) {
         return false;
     }
+
+    public boolean approveSession(Session session){
+
+        return true;
+    }
+
+
 }
 

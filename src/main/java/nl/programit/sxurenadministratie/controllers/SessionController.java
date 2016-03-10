@@ -55,5 +55,10 @@ public class SessionController implements SessionControllerInterface{
     public boolean deleteSession(Session session) {
         return false;
     }
+
+    @Override
+    public boolean approveSession(nl.programit.sxurenadministratie.model.Session session) {
+        return false;
+    }
 }
 

@@ -83,6 +83,10 @@ public class SessionController {
         return false;
     }
 
+    public Session getSessionForApproval(int indexnr){
+        return sessions.get(indexnr);
+    }
+
     public boolean approveSession(Session session, String customerPin){
         if (session.getCustomer().getPin().equals(customerPin)){
             session.setApproved(true);

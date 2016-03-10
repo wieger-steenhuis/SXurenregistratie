@@ -20,6 +20,19 @@ public class Tester {
         int index = 2;
         String pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
         System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
+
+
+        index = 3;
+        pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
+        System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
+
+        System.out.println("\nSESSIEOVERZICHT:\n");
+        System.out.println("Trainingssessie en tijd: "+controller.getSessionForApproval(index)+" ("+controller.getSessionForApproval(index).getSessionDateAndTime().getTime()+" )");
+        System.out.println("Klant: "+controller.getSessionForApproval(index).getCustomer());
+        System.out.println("Trainer: "+controller.getSessionForApproval(index).getTrainer());
+        System.out.println("Geaccordeerd: "+controller.getSessionForApproval(index).getApprovedDateAndTime().getTime());
+
+
     }
 
 

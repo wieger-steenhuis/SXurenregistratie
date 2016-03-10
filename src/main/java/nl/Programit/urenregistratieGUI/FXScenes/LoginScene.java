@@ -39,7 +39,7 @@ public class LoginScene {
         HBox row5 = new HBox();
 
         message.setText("Voer uw Login Code in.");
-        message.setFill(Color.BLUE);
+        message.setFill(Color.rgb(236,0,148));
         message.setStyle("-fx-font: bold 18px Calibri");
 
 
@@ -47,10 +47,10 @@ public class LoginScene {
         Button enterButton = new Button("ENTER");
 
         clearButton.setMinSize(80, 80);
-        clearButton.setStyle("-fx-base:#ec008e; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 18px Calibri; -fx-text-fill: white;");
+        clearButton.setStyle("-fx-base:#ec008e; -fx-background-radius: 10;-fx-border-radius: 10; -fx-border-color: #ec2592; -fx-font: bold 18px Calibri; -fx-text-fill: white;");
         clearButton.setOnAction(event -> pincodeField.clear());
         enterButton.setMinSize(80, 80);
-        enterButton.setStyle("-fx-base:#82BD02; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 18px Calibri; -fx-text-fill: white;");
+        enterButton.setStyle("-fx-base:#82BD02; -fx-background-radius: 10;-fx-border-radius: 10; -fx-border-color: #5fff00; -fx-font: bold 18px Calibri; -fx-text-fill: white;");
 
         enterButton.setOnAction(event -> {
             window.setWidth(width);
@@ -79,18 +79,19 @@ public class LoginScene {
 
             else {
                 message.setText("Uw LoginCode is onjuist!\n voer nogmaals uw code in");
-                message.setStyle("-fx-font: bold 18px Calibri;-fx-fill: crimson");
+                message.setStyle("-fx-font: bold 20 italic;-fx-fill: crimson");
                 pincodeField.clear();
             }
 
         });
 
-        pincodeField.setMinSize(240, 40);
+        pincodeField.setMinSize(244, 40);
         pincodeField.setPromptText("pincode");
-        pincodeField.setStyle("-fx-text-fill: black; -fx-background-color: #aaaaaa; -fx-border-color: #000000; -fx-border-radius: 5");
+        pincodeField.setStyle("-fx-text-fill: black; -fx-background-color: rgba(221, 214, 214, 0.64); -fx-prompt-text-fill: #444444; " +
+                "-fx-font:  20 italic;-fx-border-color: #000000;-fx-progress-color: dimgray; -fx-border-radius: 5");
 
         //Text message = new Text(getMessage(pincodeField.getText()));
-        message.setStyle("-fx-font: bold 18px Calibri; -fx-text-fill: Blue;");
+        message.setStyle("-fx-font: bold 20 italic; -fx-text-fill: #ec008e;");
         NumberButton[] numberButtons = makeNumberButtons();
 
         for (NumberButton knop : numberButtons) {
@@ -106,12 +107,20 @@ public class LoginScene {
         row5.getChildren().addAll(clearButton, numberButtons[0], enterButton);
 
         row0.setAlignment(Pos.CENTER);
-        row1.setPadding(new Insets(6, 0, 0, 0));//boven, rechts,onder, links
+        row1.setPadding(new Insets(6, 0, 3, 0));//boven, rechts,onder, links
+        row1.setSpacing(3);
         row1.setAlignment(Pos.CENTER);
-        row2.setPadding(new Insets(6, 0, 0, 0));
+        row2.setPadding(new Insets(0, 0, 3, 0));
+        row2.setSpacing(3);
         row2.setAlignment(Pos.CENTER);
+        row3.setPadding(new Insets(0, 0, 3, 0));
+        row3.setSpacing(3);
         row3.setAlignment(Pos.CENTER);
+        row4.setPadding(new Insets(0, 0, 3, 0));
+        row4.setSpacing(3);
         row4.setAlignment(Pos.CENTER);
+        row5.setPadding(new Insets(0, 0, 3, 0));
+        row5.setSpacing(3);
         row5.setAlignment(Pos.CENTER);
 
         loginFullbox.getChildren().addAll(row0, row1, row2, row3, row4, row5);
@@ -138,7 +147,7 @@ public class LoginScene {
         for (int index = 0; index < 10; index++) {
             numberButtons[index] = (new NumberButton(index));
             numberButtons[index].setMinSize(80, 80);
-            numberButtons[index].setStyle("-fx-base:#444444; -fx-background-radius: 10; -fx-border-color: #ffffff; -fx-font: bold 22px Calibri; -fx-text-fill: white;");
+            numberButtons[index].setStyle("-fx-base:#444444; -fx-background-radius: 10;-fx-border-radius: 10; -fx-border-color: #555555; -fx-font: bold 22px Calibri; -fx-text-fill: white;");
         }
         return numberButtons;
 

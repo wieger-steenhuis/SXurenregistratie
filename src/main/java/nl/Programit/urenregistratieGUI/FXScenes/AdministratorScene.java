@@ -59,7 +59,7 @@ public class AdministratorScene {
 
         //menubutton en menuItems
         menuButton.getItems().addAll(klant, trainer, admin);
-        menuButton.setStyle("-fx-font: 20 italic; -fx-base: #ec008e; " );
+        menuButton.setStyle("-fx-font: 20 italic; -fx-base: #ec008e; ;-fx-background-radius: 7; -fx-border-radius: 7" );
 
         klant.setOnAction(e -> {
             type = 1;
@@ -80,12 +80,13 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
-        confirmB.setStyle("-fx-font: 20 italic; -fx-base: #82BD02");
+        confirmB.setStyle("-fx-font: 20 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         MyButton update = new MyButton("Update");
-        update.setStyle("-fx-font: 20 italic; -fx-base: #82BD02");
+        update.setStyle("-fx-font: 20 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         MyButton delete = new MyButton("Delete Account");
-        delete.setStyle("-fx-font: 20 italic; -fx-base: #ff0000");
-        birthdayDate.setStyle("-fx-font: 20 italic");
+        delete.setStyle("-fx-font: 20 italic; -fx-base: #ff0000;-fx-background-radius: 7; -fx-border-radius: 7");
+        birthdayDate.setStyle("-fx-border-color: #5b5b5b;-fx-background-color: rgba(225, 225, 225, 0.90);-fx-font: 20 italic;" +
+                "-fx-prompt-text-fill: #7b7b7b; -fx-text-fill: #000000;-fx-background-radius: 7; -fx-border-radius: 7");
 
 
 

@@ -41,6 +41,7 @@ public class TrainerScene {
 
         HBox welkom = new HBox(welkomText);
         VBox menu = new VBox(logout);
+        menu.setPadding(new Insets(5,30,150,5));
 
         //create Togglegroup to make only one Radiobutton selectable
         //todo create text fields for first radiobutton text and if possible approved sessions
@@ -120,7 +121,7 @@ public class TrainerScene {
         VBox centrebox = new VBox(menu,sessionsToday);
 
         menu.setAlignment(Pos.TOP_LEFT);
-        menu.setPadding(new Insets(0,30,150,0));
+
         sessionsToday.setAlignment(Pos.CENTER);
         //centrebox.setAlignment(Pos.CENTER);
         //VBox fullbox = new VBox(menu,centrebox);

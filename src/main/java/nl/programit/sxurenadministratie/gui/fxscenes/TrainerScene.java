@@ -17,13 +17,20 @@ import nl.programit.sxurenadministratie.gui.Main;
 import nl.programit.administratie.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Created by udr013 on 3-3-2016.
  */
 public class TrainerScene {
 
+    private static VBox sessionsToday;
+
     public static Scene getTrainerScene(Person person) {
+
+        //SessionController controller = new SessionController();
+        //LocalDate ld = LocalDate.of(2015, 3, 31);
+        //System.out.println(controller.retrieveSessionListbyDate(ld));
 
         Trainer trainer = (Trainer)person;
         Text welkomText = new Text("Welkom trainer: " + trainer.getFirstName());
@@ -57,19 +64,45 @@ public class TrainerScene {
         sessie3.setToggleGroup(sessies);
 
 
-        sessieAproveB.setOnAction(event -> {
-            String aproved ="\u2713 ";
-
-            if (sessies.getSelectedToggle().getClass() != null){
-               // for (int intcount = 0; intcount < strArrtext.length; intcount++) {
-               //     sessies.getToggles().g.settext("test");
-                ((RadioButton)sessies.getSelectedToggle()).setText(aproved+((RadioButton)sessies.getSelectedToggle()).getText());
+        findButton.setOnAction(event1 -> {
+            sessionsToday.getChildren().clear();
+            sessionsToday.getChildren().add(findSession);
+            SessionController controller = new SessionController();
+            LocalDate ld = datePicker.getValue();
+            controller.retrieveSessionListbyDate(ld);
+            ArrayList<MyRadioButton> myRadioButtons = new ArrayList<>();
+            for(Session x:controller.retrieveSessionListbyDate(ld)){
+                MyRadioButton sessieRadioButton = new MyRadioButton(x.toString());
+                myRadioButtons.add(sessieRadioButton);
+                System.out.println("button created: "+ x.toString());
             }
+            for(RadioButton x:myRadioButtons){
+                x.setToggleGroup(sessies);
+                sessionsToday.getChildren().add(x);
+
+            }
+            sessionsToday.getChildren().add(moreSession);
 
         });
 
+        sessieAproveB.setOnAction(event -> {
+            //System.out.println(controller.retrieveSessionListbyDate(ld));
+            String approved ="\u2713 ";
+
+            if (sessies.getSelectedToggle().getClass() != null){
+
+               if(((RadioButton)sessies.getSelectedToggle()).getText().contains("✓")==true){
+                   System.out.println("already approved");
+
+                } else{
+               ((RadioButton)sessies.getSelectedToggle()).setText(approved+((RadioButton)sessies.getSelectedToggle()).getText());
+
+            }}}
+
+        );
+
         //add all radiobuttons to a VBox with 30 spacing for it's elements, can't add Togglegroup as a whole!
-        VBox sessionsToday = new VBox(30);
+        sessionsToday = new VBox(30);
 
         sessionsToday.setPadding(new Insets(30, 30, 30,30));
         sessionsToday.setStyle("-fx-background-color: rgba(221, 214, 214, 0.90);-fx-font: 20 italic;" +

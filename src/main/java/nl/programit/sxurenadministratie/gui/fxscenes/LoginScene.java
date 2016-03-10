@@ -1,4 +1,4 @@
-package nl.programit.sxurenadministratie.urenregistratiegui.fxscenes;
+package nl.programit.sxurenadministratie.gui.fxscenes;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,8 +10,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
-import nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents.MyPasswordField;
-import nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents.NumberButton;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyPasswordField;
+import nl.programit.sxurenadministratie.gui.fxcomponents.NumberButton;
 import nl.programit.administratie.*;
 
 /**

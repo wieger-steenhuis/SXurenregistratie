@@ -1,4 +1,4 @@
-package nl.programit.sxurenadministratie.urenregistratiegui.fxscenes;
+package nl.programit.sxurenadministratie.gui.fxscenes;
 
 
 import javafx.geometry.Insets;
@@ -9,10 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
-import nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents.MyButton;
-import nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents.MyDatePicker;
-import nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents.MyRadioButton;
-import nl.programit.sxurenadministratie.urenregistratiegui.Main;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyDatePicker;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyRadioButton;
+import nl.programit.sxurenadministratie.gui.Main;
 import nl.programit.administratie.*;
 
 import java.time.LocalDate;

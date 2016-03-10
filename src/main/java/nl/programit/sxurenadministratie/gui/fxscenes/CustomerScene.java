@@ -1,11 +1,11 @@
-package nl.programit.sxurenadministratie.urenregistratiegui.fxscenes;
+package nl.programit.sxurenadministratie.gui.fxscenes;
 
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
-import nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents.MyButton;
-import nl.programit.sxurenadministratie.urenregistratiegui.Main;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
+import nl.programit.sxurenadministratie.gui.Main;
 import nl.programit.administratie.*;
 
 /**

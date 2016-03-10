@@ -1,4 +1,4 @@
-package nl.programit.sxurenadministratie.urenregistratiegui.fxcomponents;
+package nl.programit.sxurenadministratie.gui.fxcomponents;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;

@@ -1,5 +1,6 @@
 package nl.programit.sxurenadministratie.model;
 
+
 public abstract class Person {
 
         private int entryNumber;

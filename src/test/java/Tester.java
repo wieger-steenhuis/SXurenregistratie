@@ -1,7 +1,19 @@
+import nl.programit.administratie.SessionController;
+
+import java.time.LocalDate;
+
 public class Tester {
+    public static void main(String[] args) {
+        SessionController controller = new SessionController();
+        LocalDate ld = LocalDate.of(2015, 3, 31);
+        System.out.println(controller.retrieveSessionListbyDate(ld));
+    }
+
+
+
 
     /*
-    public static void main(String[] args) {
+
         //create persons (Customer, Trainer and Administrator):
         Administrator baddi = new Administrator();
         baddi.setPin(8888);

@@ -1,6 +1,4 @@
-package nl.programit.sxurenadministratie.model;
-
-import java.util.Calendar;
+package nl.programit.administratie;
 
 /**
  Trainer (selectie op identificatiecode), Customer (selectie op
@@ -12,7 +10,7 @@ import java.util.Calendar;
 public class Session {
     private Trainer trainer;
     private Customer customer;
-    private Calendar DateAndTime;
+    private java.util.Calendar DateAndTime;
     private boolean approved;
     private double duration;
 
@@ -28,10 +26,10 @@ public class Session {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    public Calendar getDateAndTime() {
+    public java.util.Calendar getDateAndTime() {
         return DateAndTime;
     }
-    public void setDateAndTime(Calendar dateAndTime) {
+    public void setDateAndTime(java.util.Calendar dateAndTime) {
         DateAndTime = dateAndTime;
     }
     public boolean isApproved() {
@@ -49,6 +47,6 @@ public class Session {
 
     @Override
     public String toString() {
-        return customer.getFirstName()+" "+customer.getLastName()+" "+getDateAndTime().getTime().toString();
+        return customer.getFirstName()+" "+customer.getLastName()+" "+getDateAndTime().getTime().toString()+" "+isApproved();
     }
 }

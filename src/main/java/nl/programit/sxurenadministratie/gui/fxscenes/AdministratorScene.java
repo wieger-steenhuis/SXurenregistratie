@@ -12,7 +12,7 @@ import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
 import nl.programit.sxurenadministratie.gui.fxcomponents.MyDatePicker;
 import nl.programit.sxurenadministratie.gui.fxcomponents.MyText;
 import nl.programit.sxurenadministratie.gui.fxcomponents.MyTextField;
-import nl.programit.urenregistratiegui.fxcomponents.*;
+
 import nl.programit.sxurenadministratie.gui.Main;
 import nl.programit.administratie.*;
 
@@ -115,7 +115,7 @@ public class AdministratorScene {
         });
 
         customertoEditButton.setOnAction(event1 -> {
-            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+            String pinToCheck = customerToEditField.getText();
 
             thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);
 
@@ -146,7 +146,7 @@ public class AdministratorScene {
         });
 
         update.setOnAction(event -> {
-            int pinToCheck = Integer.parseInt(customerToEditField.getText());
+            String pinToCheck = customerToEditField.getText();
 
             //Person thisPerson = DataPersister.getInstance().retrieveEntry(pinToCheck);/// check check
 
@@ -260,21 +260,21 @@ public class AdministratorScene {
     private static Person setPersonReady(Person thisPerson) {
 
         if(thisPerson instanceof Administrator){
-            ((Administrator)thisPerson).setAdministratorID(Integer.parseInt(idNr.getText()));
+            ((Administrator)thisPerson).setAdministratorID(idNr.getText());
 
         }else if(thisPerson instanceof Trainer){
-            ((Trainer)thisPerson).setEmployeeId(Integer.parseInt(idNr.getText()));
+            ((Trainer)thisPerson).setEmployeeId(idNr.getText());
         }else if(thisPerson instanceof Customer){
-            ((Customer)thisPerson).setCustumerID(Integer.parseInt(idNr.getText()));
+            ((Customer)thisPerson).setCustumerID(idNr.getText());
         }
         thisPerson.setFirstName(firstName.getText());
         thisPerson.setLastName(lastName.getText());
         thisPerson.setStreet(street.getText());
-        thisPerson.setHouseNr(Integer.parseInt(houseNr.getText()));
+        thisPerson.setHouseNr(houseNr.getText());
         thisPerson.setCity(city.getText());
         thisPerson.setZipCode(zipCode.getText());
         thisPerson.setBirthDay(birthdayDate.getValue());
-        thisPerson.setPin(Integer.parseInt(pin.getText()));
+        thisPerson.setPin(pin.getText());
         thisPerson.setBankAccountID(bankAccount.getText());
         thisPerson.setEmailAddress(email.getText());
         thisPerson.setGender(gender.getText());

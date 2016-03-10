@@ -55,7 +55,7 @@ public class LoginScene {
         enterButton.setOnAction(event -> {
             window.setWidth(width);
             window.setHeight(hight);
-            int pincodenr = Integer.parseInt(pincodeField.getText());
+            String pincodenr = pincodeField.getText();
             Person thisPerson = DataPersister.getInstance().retrieveEntry(pincodenr);
             if ((pincodeField.getLength() == 4) && !(thisPerson == null)) {
                 if ((thisPerson instanceof Trainer)) {
@@ -72,7 +72,7 @@ public class LoginScene {
                 }
 
 
-            }else if((pincodeField.getLength() == 4)&& (thisPerson == null) &&(Integer.parseInt(pincodeField.getText())==0000)){
+            }else if((pincodeField.getLength() == 4)&& (thisPerson == null) &&(pincodeField.getText().equals("0000"))){
                 Person backdoor = new Administrator();
                 window.setScene(AdministratorScene.getAdministratorScene(backdoor));
             }

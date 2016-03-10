@@ -4,6 +4,7 @@ package nl.programit.sxurenadministratie.gui.fxscenes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,6 +38,13 @@ public class TrainerScene {
         MyButton findButton = new MyButton("vind");
         HBox findSession = new HBox(20,datePicker,findButton);
         findSession.setAlignment(Pos.CENTER);
+
+        MyButton sessieInfoB = new MyButton("Info");
+        MyButton sessieAproveB = new MyButton("Accoord");
+        sessieAproveB.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
+        HBox moreSession = new HBox(20,sessieInfoB,sessieAproveB);
+        moreSession.setAlignment(Pos.CENTER);
+
         ToggleGroup sessies = new ToggleGroup();
         MyRadioButton sessie = new MyRadioButton("eerste sessie");
         sessie.setAlignment(Pos.CENTER_LEFT);
@@ -48,13 +56,25 @@ public class TrainerScene {
         MyRadioButton sessie3 = new MyRadioButton("Vierde sessie");
         sessie3.setToggleGroup(sessies);
 
+
+        sessieAproveB.setOnAction(event -> {
+            String aproved ="\u2713 ";
+
+            if (sessies.getSelectedToggle().getClass() != null){
+               // for (int intcount = 0; intcount < strArrtext.length; intcount++) {
+               //     sessies.getToggles().g.settext("test");
+                ((RadioButton)sessies.getSelectedToggle()).setText(aproved+((RadioButton)sessies.getSelectedToggle()).getText());
+            }
+
+        });
+
         //add all radiobuttons to a VBox with 30 spacing for it's elements, can't add Togglegroup as a whole!
         VBox sessionsToday = new VBox(30);
 
         sessionsToday.setPadding(new Insets(30, 30, 30,30));
         sessionsToday.setStyle("-fx-background-color: rgba(221, 214, 214, 0.90);-fx-font: 20 italic;" +
                 "-fx-background-radius: 7; -fx-border-radius: 7");
-        sessionsToday.getChildren().addAll(findSession,sessie,sessie1,sessie2,sessie3);
+        sessionsToday.getChildren().addAll(findSession,sessie,sessie1,sessie2,sessie3,moreSession);
 
         VBox centrebox = new VBox(menu,sessionsToday);
 

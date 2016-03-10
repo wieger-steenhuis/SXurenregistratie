@@ -1,5 +1,6 @@
 package nl.programit.urenregistratiegui.fxscenes;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -80,6 +81,7 @@ public class AdministratorScene {
         MyButton createAccount = new MyButton("Create Account");
         MyButton editAccount = new MyButton("Edit Account");
         MyButton confirmB = new MyButton("Bevestig");
+        MyButton newSessieB = new MyButton("Create Sessie");
         confirmB.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         MyButton update = new MyButton("Update");
         update.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
@@ -200,7 +202,8 @@ public class AdministratorScene {
         VBox elements = new VBox(welkomText);
 
         //left side Vbox Basic Menu options
-        VBox menuVBox = new VBox(10,logout, createAccount,editAccount);
+        VBox menuVBox = new VBox(5,logout, createAccount,editAccount, newSessieB);
+        menuVBox.setPadding(new Insets(5,5,5,5));
         logout.setMinWidth(180);
         //logout.setStyle("-fx-text-alignment: center");
         logout.setAlignment(Pos.TOP_LEFT);

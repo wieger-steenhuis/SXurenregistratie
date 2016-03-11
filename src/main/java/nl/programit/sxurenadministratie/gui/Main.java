@@ -27,7 +27,7 @@ public class Main extends Application {
     }
 
     public static final MyButton getLogout(){
-        MyButton logout = new MyButton("logout");
+        MyButton logout = new MyButton("Logout");
         logout.setOnAction(event ->
             window.setScene(LoginScene.getLoginScene(window)));
         return logout;

@@ -38,8 +38,8 @@ public class LoginScene {
         HBox row4 = new HBox();
         HBox row5 = new HBox();
 
-        message.setText("Voer uw Login Code in.");
-        message.setFill(Color.rgb(236,0,148));
+        //message.setText("Voer uw Login Code in.");
+        message.setFill(Color.rgb(130,189,2));
         message.setStyle("-fx-font: bold 18px Calibri");
 
 
@@ -86,12 +86,12 @@ public class LoginScene {
         });
 
         pincodeField.setMinSize(244, 40);
-        pincodeField.setPromptText("pincode");
+        pincodeField.setPromptText("Pincode");
         pincodeField.setStyle("-fx-text-fill: black; -fx-background-color: rgba(221, 214, 214, 0.64); -fx-prompt-text-fill: #444444; " +
                 "-fx-font:  20 italic;-fx-border-color: #000000;-fx-progress-color: dimgray; -fx-border-radius: 5");
 
         //Text message = new Text(getMessage(pincodeField.getText()));
-        message.setStyle("-fx-font: bold 20 italic; -fx-text-fill: #ec008e;");
+        message.setStyle("-fx-font: bold 20 italic; -fx-text-fill: #82BD02;");
         NumberButton[] numberButtons = makeNumberButtons();
 
         for (NumberButton knop : numberButtons) {

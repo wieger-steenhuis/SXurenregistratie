@@ -49,12 +49,12 @@ public class TrainerScene {
         //todo create text fields for first radiobutton text and if possible approved sessions
         MyDatePicker datePicker = new MyDatePicker();
         datePicker.setValue(LocalDate.now());
-        MyButton findButton = new MyButton("vind");
+        MyButton findButton = new MyButton("Vind");
         HBox findSession = new HBox(20,datePicker,findButton);
         findSession.setAlignment(Pos.CENTER);
 
         MyButton sessieInfoB = new MyButton("Info");
-        MyButton sessieAproveB = new MyButton("Accoord");
+        MyButton sessieAproveB = new MyButton("Akkoord");
         sessieAproveB.setStyle("-fx-font: bold 16 calibre; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         HBox moreSession = new HBox(20,sessieInfoB,sessieAproveB);
         moreSession.setAlignment(Pos.CENTER);

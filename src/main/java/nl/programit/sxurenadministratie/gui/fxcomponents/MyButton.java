@@ -18,7 +18,7 @@ public  class MyButton extends Button{
         setText(a);
         setTextFill( Color.WHITE );
         setMinWidth(180.0);
-        setStyle( "-fx-font: 16px italic; -fx-base: #ec008e;-fx-background-radius: 7; -fx-border-color: deeppink; " +
+        setStyle( "-fx-font:bold 16px calibre; -fx-base: #ec008e;-fx-background-radius: 7; -fx-border-color: deeppink; " +
                 "-fx-progress-color: deeppink; -fx-border-radius: 7" );
 
     }

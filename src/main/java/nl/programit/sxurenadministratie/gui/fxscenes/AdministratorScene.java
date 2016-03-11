@@ -145,7 +145,7 @@ public class AdministratorScene {
             zipCode.setText(thisPerson.getZipCode());
             city.setText(thisPerson.getCity());
             birthdayDate.setPromptText(""+thisPerson.getBirthDay());
-            bankAccount.setText(thisPerson.getBankAccountID());
+            bankAccount.setText(thisPerson.getPhoneNr());
             email.setText(thisPerson.getEmailAddress());
             pin.setText(""+thisPerson.getPin());
 
@@ -282,7 +282,7 @@ public class AdministratorScene {
         thisPerson.setZipCode(zipCode.getText());
         thisPerson.setBirthDay(birthdayDate.getValue());
         thisPerson.setPin(pin.getText());
-        thisPerson.setBankAccountID(bankAccount.getText());
+        thisPerson.setPhoneNr(bankAccount.getText());
         thisPerson.setEmailAddress(email.getText());
         thisPerson.setGender(gender.getText());
         return thisPerson;

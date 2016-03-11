@@ -101,4 +101,9 @@ public abstract class Person {
 	public void setBankAccountID(String bankAccountID) {
 		this.bankAccountID = bankAccountID;
 	}
+
+	@Override
+	public String toString() {
+		return getFirstName()+" "+getLastName()+" "+getCity();
+	}
 }

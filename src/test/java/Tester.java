@@ -7,32 +7,32 @@ public class Tester {
         SessionController controller = new SessionController();
 
         LocalDate ld = null;//LocalDate.of(2015, 3, 31);
-
+/*
         System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS BADDI APPROVED
         controller.approveSession(controller.retrieveSessionListbyDate(ld).get(1), "2222");
         System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS FELIX & BADDI APPROVED
         System.out.println(controller.approveSession(controller.retrieveSessionListbyDate(ld).get(1), "3333"));
         System.out.println(controller.retrieveSessionListbyDate(ld));//wrong pin, no sessions approved
-        System.out.println(controller.approveSession(controller.getSessionForApproval(2), "3333"));//retrieve third session, approve and return TRUE
-        System.out.println(controller.getSessionForApproval(2)); //PRINTS APPROVED SJOERD ONLY
+        //System.out.println(controller.approveSession(controller.getSessionForApproval(), "3333"));//retrieve third session, approve and return TRUE
+        //System.out.println(controller.getSessionForApproval(2)); //PRINTS APPROVED SJOERD ONLY
         System.out.println(controller.retrieveSessionListbyDate(ld));//PRINTS SJOERD, FELIX & BADDI APPROVED
 
         int index = 2;
-        String pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
-        System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
+        //String pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
+        //System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
 
 
         index = 3;
-        pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
-        System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
+        //pin  = controller.getSessionForApproval(index).getCustomer().getPin(); //STRAKS WORDT DIT DE PINCODE DIE WORDT INGETOETST
+        //System.out.println(controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin()));
 
         System.out.println("\nSESSIEOVERZICHT:\n");
-        System.out.println("Trainingssessie en tijd: "+controller.getSessionForApproval(index)+" ("+controller.getSessionForApproval(index).getSessionDateAndTime().getTime()+" )");
-        System.out.println("Klant: "+controller.getSessionForApproval(index).getCustomer());
-        System.out.println("Trainer: "+controller.getSessionForApproval(index).getTrainer());
-        System.out.println("Geaccordeerd: "+controller.getSessionForApproval(index).getApprovedDateAndTime().getTime());
+        //System.out.println("Trainingssessie en tijd: "+controller.getSessionForApproval(index)+" ("+controller.getSessionForApproval(index).getSessionDateAndTime().getTime()+" )");
+        //System.out.println("Klant: "+controller.getSessionForApproval(index).getCustomer());
+        //System.out.println("Trainer: "+controller.getSessionForApproval(index).getTrainer());
+        //System.out.println("Geaccordeerd: "+controller.getSessionForApproval(index).getApprovedDateAndTime().getTime());
 
-
+*/
     }
 
 

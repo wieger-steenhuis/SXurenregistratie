@@ -132,11 +132,13 @@ public class SessionController {
         return true;
     }
 
-    public ArrayList<Session> retrieveSessionListbyDate(LocalDate date) {
+    public ArrayList<Session> retrieveSessionListbyDate(LocalDate date, Trainer trainer) {
 
         ArrayList<Session> todaysSessions = new ArrayList<>();
         for (Session s : sessions){
-            if (date.getYear()==s.getSessionDateAndTime().get(Calendar.YEAR) &&date.getMonthValue()-1==s.getSessionDateAndTime().get(Calendar.MONTH)&& date.getDayOfMonth()==s.getSessionDateAndTime().get(Calendar.DAY_OF_MONTH))
+            System.out.println(trainer);
+            System.out.println(s.getTrainer());
+            if (trainer.equals(s.getTrainer())&&date.getYear()==s.getSessionDateAndTime().get(Calendar.YEAR) &&date.getMonthValue()-1==s.getSessionDateAndTime().get(Calendar.MONTH)&& date.getDayOfMonth()==s.getSessionDateAndTime().get(Calendar.DAY_OF_MONTH))
                 todaysSessions.add(s);
             }
 
@@ -151,8 +153,11 @@ public class SessionController {
         return false;
     }
 
-    public Session getSessionForApproval(int indexnr){
-        return sessions.get(indexnr);
+    public Session getSessionForApproval(Session session){
+        for (Session s : sessions){
+            if (s.equals(session)) return session;
+        }
+        return null;
     }
 
     public boolean approveSession(Session session, String customerPin){

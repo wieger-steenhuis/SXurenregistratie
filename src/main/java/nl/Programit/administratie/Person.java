@@ -106,4 +106,14 @@ public abstract class Person {
 	public String toString() {
 		return getFirstName()+" "+getLastName()+" "+getCity();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Person) {
+			if (((Person) obj).getPin().equals(this.getPin())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

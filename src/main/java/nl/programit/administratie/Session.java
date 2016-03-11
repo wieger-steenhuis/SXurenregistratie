@@ -58,6 +58,6 @@ public class Session {
     public String toString() {
         String approval = "";
         if (isApproved()) approval = "\u2713 ";
-        return +getSessionDateAndTime().get(Calendar.HOUR_OF_DAY)+":"+getSessionDateAndTime().get(Calendar.MINUTE)+"0 uur "+customer.getFirstName()+" "+customer.getLastName()+" "+approval;
+        return approval+" "+getSessionDateAndTime().get(Calendar.HOUR_OF_DAY)+":"+getSessionDateAndTime().get(Calendar.MINUTE)+"0 uur "+customer.getFirstName()+" "+customer.getLastName();
     }
 }

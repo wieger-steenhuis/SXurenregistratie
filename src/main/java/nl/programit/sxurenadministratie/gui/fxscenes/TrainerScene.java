@@ -21,12 +21,14 @@ import java.util.ArrayList;
 
 /**
  * Created by udr013 on 3-3-2016.
+ *
  */
 public class TrainerScene {
 
     private static VBox sessionsToday;
     private  static ArrayList<MyRadioButton> myRadioButtons;
     private static SessionController controller = new SessionController();
+    private static ArrayList<Session> todaysSessions;
 
     public static Scene getTrainerScene(Person person) {
 
@@ -47,13 +49,13 @@ public class TrainerScene {
         //todo create text fields for first radiobutton text and if possible approved sessions
         MyDatePicker datePicker = new MyDatePicker();
         datePicker.setValue(LocalDate.now());
-        MyButton findButton = new MyButton("vind");
+        MyButton findButton = new MyButton("Vind");
         HBox findSession = new HBox(20,datePicker,findButton);
         findSession.setAlignment(Pos.CENTER);
 
         MyButton sessieInfoB = new MyButton("Info");
-        MyButton sessieAproveB = new MyButton("Accoord");
-        sessieAproveB.setStyle("-fx-font: 16 italic; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
+        MyButton sessieAproveB = new MyButton("Akkoord");
+        sessieAproveB.setStyle("-fx-font: bold 16 calibre; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         HBox moreSession = new HBox(20,sessieInfoB,sessieAproveB);
         moreSession.setAlignment(Pos.CENTER);
 
@@ -67,17 +69,11 @@ public class TrainerScene {
             sessionsToday.getChildren().clear();
             sessionsToday.getChildren().add(findSession);
             //controller = new SessionController();
-            LocalDate ld = datePicker.getValue();
-            controller.retrieveSessionListbyDate(ld);
+            todaysSessions =  controller.retrieveSessionListbyDate(datePicker.getValue(), trainer);
             myRadioButtons = new ArrayList<>();
-            for(Session x:controller.retrieveSessionListbyDate(ld))
-                if (x.isApproved() == false) {
+            for(Session x : todaysSessions){
                     MyRadioButton sessieRadioButton = new MyRadioButton(x.toString());
                     myRadioButtons.add(sessieRadioButton);
-                }else {
-                    MyRadioButton sessieRadioButton = new MyRadioButton("\u2713 " + x.toString());
-                    myRadioButtons.add(sessieRadioButton);
-
                 }
             for(RadioButton x:myRadioButtons){
                 x.setToggleGroup(sessies);
@@ -89,24 +85,20 @@ public class TrainerScene {
         });
 
         sessieAproveB.setOnAction(event -> {
-            //System.out.println(controller.retrieveSessionListbyDate(ld));
             String approved ="\u2713 ";
 
             if (sessies.getSelectedToggle().getClass() != null){
 
-               if(((RadioButton)sessies.getSelectedToggle()).getText().contains("✓")==true){
+               if(((RadioButton)sessies.getSelectedToggle()).getText().contains("✓")){
                    System.out.println("already approved");
 
                 } else{
                ((RadioButton)sessies.getSelectedToggle()).setText(approved+((RadioButton)sessies.getSelectedToggle()).getText());
-                int index =myRadioButtons.indexOf((RadioButton)sessies.getSelectedToggle());
-                   System.out.println(controller.getSessionForApproval(index));//CONTROLE PRINT VOOR APPROVAL
+                int index =myRadioButtons.indexOf(sessies.getSelectedToggle());
+                   System.out.println(todaysSessions.get(index));//CONTROLE PRINT VOOR APPROVAL
                    //TODO Tweede argument straks vervangen voor de door de klant ingetoetste pincode:
-                   controller.approveSession(controller.getSessionForApproval(index),controller.getSessionForApproval(index).getCustomer().getPin());
-                   System.out.println(controller.getSessionForApproval(index));//CONTROLE PRINT NA APPROVAL
-
-
-
+                   controller.approveSession(controller.getSessionForApproval(todaysSessions.get(index)),controller.getSessionForApproval(todaysSessions.get(index)).getCustomer().getPin());
+                   System.out.println(todaysSessions.get(index));//CONTROLE PRINT NA APPROVAL
             }}}
 
         );

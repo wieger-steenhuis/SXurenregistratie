@@ -11,7 +11,7 @@ public abstract class Person {
         private String city;
         private int houseNr;
         private java.time.LocalDate birthDay;
-        private String bankAccountID;
+        private String phoneNr;
         private int pin;
         private String emailAddress;
         private String gender;
@@ -82,10 +82,10 @@ public abstract class Person {
     public void setBirthDay(java.time.LocalDate birthDay) {
         this.birthDay = birthDay;
     }
-    public String getBankAccountID() {
-            return bankAccountID;
+    public String getPhoneNr() {
+            return phoneNr;
         }
-    public void setBankAccountID(String bankAccountID) {
-            this.bankAccountID = bankAccountID;
+    public void setPhoneNr(String phoneNr) {
+            this.phoneNr = phoneNr;
         }
 }

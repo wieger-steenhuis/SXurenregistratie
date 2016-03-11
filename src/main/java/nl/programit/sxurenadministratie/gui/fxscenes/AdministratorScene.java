@@ -40,7 +40,7 @@ public class AdministratorScene {
     private static MyTextField zipCode = new MyTextField("Postcode");
     private static MyTextField city = new MyTextField("Stad");
     private static MyTextField email = new MyTextField("E-mail Adres");
-    private static MyTextField bankAccount = new MyTextField("Bank Rekening");
+    private static MyTextField bankAccount = new MyTextField("Tel Nummer");
     private static MyTextField pin = new MyTextField("Pincode");
     private static MyDatePicker birthdayDate = new MyDatePicker();
 
@@ -65,7 +65,7 @@ public class AdministratorScene {
         //menubutton en menuItems
         menuButton.getItems().addAll(klant, trainer, admin);
         menuButton.setMinWidth(350);
-        menuButton.setStyle("-fx-font:bold 16px calibre; -fx-base: #ec008e; ;-fx-background-radius: 7; -fx-border-radius: 7" );
+        menuButton.setStyle("-fx-text-alignment: center;-fx-font:bold 16px calibre; -fx-base: #ec008e; ;-fx-background-radius: 7; -fx-border-radius: 7" );
 
         klant.setOnAction(e -> {
             type = "Klant";
@@ -91,7 +91,8 @@ public class AdministratorScene {
         MyButton update = new MyButton("Update");
         update.setStyle("-fx-font: bold 16px calibre; -fx-base: #82BD02;-fx-background-radius: 7; -fx-border-radius: 7");
         MyButton delete = new MyButton("Delete Account");
-        delete.setStyle("-fx-font:bold 16px calibre; -fx-base: #ff0000;-fx-background-radius: 7; -fx-border-radius: 7");
+        delete.setStyle("-fx-font:bold 16px calibre; -fx-base: #f56708;-fx-background-radius: 7; -fx-border-radius: 7");
+        birthdayDate.setPromptText("Verjaardag");
         birthdayDate.setStyle("-fx-border-color: #5b5b5b;-fx-background-color: rgba(225, 225, 225, 0.90);-fx-font: 16 italic;" +
                 "-fx-prompt-text-fill: #7b7b7b; -fx-text-fill: #000000;-fx-background-radius: 7; -fx-border-radius: 7");
 
@@ -145,7 +146,7 @@ public class AdministratorScene {
             zipCode.setText(thisPerson.getZipCode());
             city.setText(thisPerson.getCity());
             birthdayDate.setPromptText(""+thisPerson.getBirthDay());
-            bankAccount.setText(thisPerson.getBankAccountID());
+            bankAccount.setText(thisPerson.getPhoneNr());
             email.setText(thisPerson.getEmailAddress());
             pin.setText(""+thisPerson.getPin());
 
@@ -217,8 +218,8 @@ public class AdministratorScene {
         menuVBox.setPadding(new Insets(5,5,5,5));
         logout.setMinWidth(180);
         //logout.setStyle("-fx-text-alignment: center");
-        logout.setAlignment(Pos.TOP_LEFT);
-        createAccount.setAlignment(Pos.CENTER_RIGHT);
+        //logout.setAlignment(Pos.TOP_LEFT);
+        //createAccount.setAlignment(Pos.CENTER_RIGHT);
 
         //center VBox createAccount and Attributes
         AccountVBox1 = new VBox(15,idNr,gender, firstName,lastName,street,houseNr);
@@ -282,7 +283,7 @@ public class AdministratorScene {
         thisPerson.setZipCode(zipCode.getText());
         thisPerson.setBirthDay(birthdayDate.getValue());
         thisPerson.setPin(pin.getText());
-        thisPerson.setBankAccountID(bankAccount.getText());
+        thisPerson.setPhoneNr(bankAccount.getText());
         thisPerson.setEmailAddress(email.getText());
         thisPerson.setGender(gender.getText());
         return thisPerson;

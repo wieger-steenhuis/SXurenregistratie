@@ -11,7 +11,7 @@ public abstract class Person {
 	private String city;
 	private String houseNr;
 	private LocalDate birthDay;
-	private String bankAccountID;
+	private String phoneNr;
 	private String pin;
 	private String emailAddress;
 	private String gender;
@@ -95,15 +95,25 @@ public abstract class Person {
 			this.setBirthDay(LocalDate.of(year, month, day));
 		}
 	}
-	public String getBankAccountID() {
-		return bankAccountID;
+	public String getPhoneNr() {
+		return phoneNr;
 	}
-	public void setBankAccountID(String bankAccountID) {
-		this.bankAccountID = bankAccountID;
+	public void setPhoneNr(String phoneNr) {
+		this.phoneNr = phoneNr;
 	}
 
 	@Override
 	public String toString() {
 		return getFirstName()+" "+getLastName()+" "+getCity();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Person) {
+			if (((Person) obj).getPin().equals(this.getPin())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

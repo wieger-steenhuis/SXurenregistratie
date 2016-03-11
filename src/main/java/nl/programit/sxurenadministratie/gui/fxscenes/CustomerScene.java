@@ -23,6 +23,9 @@ import java.util.ArrayList;
  */
 public class CustomerScene {
 
+    private static VBox customerSessionBox1 =new VBox(30);
+    private static VBox customerSessionBox2 =new VBox(30);
+
     public static Scene getCustomerScene(Person person) {
 
         Customer customer = (Customer) person;
@@ -40,26 +43,43 @@ public class CustomerScene {
         VBox customerSessionBox = new VBox(30);
         customerSessionBox.setAlignment(Pos.CENTER);
         customerSessionBox.getChildren().add(welkomText);
+
+        HBox customerSessions = new HBox();
+        customerSessionBox1.setAlignment(Pos.CENTER);
+        customerSessionBox2.setAlignment(Pos.CENTER);
+
+        customerSessions.setAlignment(Pos.CENTER);
+        customerSessionBox.getChildren().add(customerSessions);
+
         ToggleGroup sessions = new ToggleGroup();
+
         ArrayList<MyRadioButton> customerCheckboxes = new ArrayList<>();
 
         for (int x = 1; x < 13; x++) {
-            if(x<5) {
+            if(x<4) {
                 MyRadioButton y = new MyRadioButton("\u2713  " + x + "ste Sessie");
                 y.setToggleGroup(sessions);
                 customerCheckboxes.add(y);
-                customerSessionBox.getChildren().add(y);
+                customerSessionBox1.getChildren().add(y);
+            }else if(x<7){
+                MyRadioButton y = new MyRadioButton("     " + x + "ste Sessie");
+                y.setToggleGroup(sessions);
+                customerCheckboxes.add(y);
+                customerSessionBox1.getChildren().add(y);
             }else{
                 MyRadioButton y = new MyRadioButton("     " + x + "ste Sessie");
                 y.setToggleGroup(sessions);
                 customerCheckboxes.add(y);
-                customerSessionBox.getChildren().add(y);
+                customerSessionBox2.getChildren().add(y);
 
             }
 
-
             //y.setAlignment(Pos.CENTER);
         }
+        customerSessions.getChildren().addAll(customerSessionBox1,customerSessionBox2);
+       // customerSessions.getChildren().add(customerSessionBox2);
+        MyButton sessieInfoB = new MyButton("Info");
+        customerSessionBox.getChildren().add(sessieInfoB);
 
         customerSessionBox.setPadding(new Insets(30, 30, 30, 30));
         customerSessionBox.setStyle("-fx-background-color: rgba(221, 214, 214, 0.90);-fx-font: 20 italic;" +

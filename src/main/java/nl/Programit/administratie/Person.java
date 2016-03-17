@@ -107,7 +107,7 @@ public abstract class Person {
 		return getFirstName()+" "+getLastName()+" "+getCity();
 	}
 
-	@Override
+	@Override // overrides equals to verify pin of persons
 	public boolean equals(Object obj) {
 		if (obj instanceof Person) {
 			if (((Person) obj).getPin().equals(this.getPin())) {

@@ -67,6 +67,7 @@ public class DataPersister {
         try(FileWriter fW = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fW)){
             writer.write(input);
+            writer.newLine();
         }
         catch (IOException e){
             System.out.println("caught");
@@ -131,10 +132,10 @@ public class DataPersister {
                 break;
             }
         }
+        clearDb();
         for (String inputLine : inputLines){
-            newDatabase = newDatabase.concat(inputLine);
+            replaceDataBase(inputLine);
         }
-        replaceDataBase(newDatabase);
     }
 
     //Delete entry copies entire database to String, removes entry and copies String back to txt-file:
@@ -151,11 +152,11 @@ public class DataPersister {
                 break;
             }
         }
+        clearDb();
         for (String inputLine : inputLines){
             if (!(inputLine.equals("0")))
-            newDatabase = newDatabase.concat(inputLine);
+                replaceDataBase(inputLine);
         }
-        replaceDataBase(newDatabase);
     }
 
     // replace entryline in entry String array before copying back to txt-file:
@@ -174,11 +175,20 @@ public class DataPersister {
         return input;
     }
 
-    // replaces whole database after entry update or delete:
-    private void replaceDataBase(String database){
-        try(FileWriter fW = new FileWriter(file);
+    private void clearDb(){
+        try(FileWriter clearDb = new FileWriter(file)){
+            clearDb.write("");
+        }
+        catch (IOException e){
+            System.out.println("caught");
+        }
+    }
+    // replaces database lines after entry update or delete:
+    private void replaceDataBase(String inputLine){
+        try(FileWriter fW = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fW)){
-            writer.write(database);
+            writer.write(inputLine);
+            writer.newLine();
         }
         catch (IOException e){
             System.out.println("caught");
@@ -234,24 +244,20 @@ public class DataPersister {
 
     // copies all entries in txt-file to String array
     private ArrayList<String> databaseCopy(){
-        String output = null;
+
+        ArrayList<String> inputLines = new ArrayList<>();
+
         try(FileReader fR = new FileReader(file);
             BufferedReader reader = new BufferedReader(fR)){
-            output = reader.readLine();
+            String output = null;
+            while ((output = reader.readLine()) !=null){
+                inputLines.add(output);
+            }
         }
         catch (IOException e){
             System.out.println("caught");
         }
-        ArrayList<String> inputLines = new ArrayList<>();
-
-        if (output != null) {
-            while (output.indexOf('#') != -1) {
-                inputLines.add(output.substring(0, output.indexOf('#') + 1));
-                output = output.substring(output.indexOf('#') + 1, output.length());
-            }
-            return inputLines;
-        }
-        else return null;
+        return inputLines;
     }
 
     // retrieve all items from database with regex matching:

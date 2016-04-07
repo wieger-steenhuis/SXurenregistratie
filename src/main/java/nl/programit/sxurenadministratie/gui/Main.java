@@ -1,11 +1,11 @@
 package nl.programit.sxurenadministratie.gui;
 
 
-import javafx.application.*;
+import javafx.application.Application;
 import javafx.scene.image.Image;
-import javafx.stage.*;
-import nl.programit.sxurenadministratie.gui.fxcomponents.*;
-import nl.programit.sxurenadministratie.gui.fxscenes.*;
+import javafx.stage.Stage;
+import nl.programit.sxurenadministratie.gui.fxcomponents.MyButton;
+import nl.programit.sxurenadministratie.gui.fxscenes.LoginScene;
 
 
 public class Main extends Application {

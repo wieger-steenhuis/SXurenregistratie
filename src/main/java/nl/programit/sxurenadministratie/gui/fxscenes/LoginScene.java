@@ -131,8 +131,8 @@ public class LoginScene {
         Image image = new Image("IMG_3241.jpg");
         ImageView imageSX = new ImageView();
         imageSX.setImage(image);
-        imageSX.isPreserveRatio();
-        imageSX.fitWidthProperty().bind(loginScene.widthProperty());
+        imageSX.setPreserveRatio(true);
+        //imageSX.fitWidthProperty().bind(loginScene.widthProperty());
         imageSX.fitHeightProperty().bind(loginScene.heightProperty());
 
         //onderliggend veld, dual layer

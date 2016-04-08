@@ -237,7 +237,7 @@ public class AdministratorScene {
         StackPane achtergrond2 = new StackPane();
         Scene scene = new Scene(achtergrond2);
 
-        Image image = new Image("IMG_3242.jpg");
+        Image image = new Image("file:///C:\\Users\\ProgramIT\\IdeaProjects\\ProgramIT\\SXurenregistratie\\src\\main\\resources\\IMG_3242.jpg");
         ImageView imageSX = new ImageView();
         imageSX.setImage(image);
         imageSX.isPreserveRatio();

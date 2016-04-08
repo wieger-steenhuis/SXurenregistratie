@@ -128,7 +128,7 @@ public class LoginScene {
         StackPane achtergrond1 = new StackPane();
         Scene loginScene = new Scene(achtergrond1);
 
-        Image image = new Image("IMG_3241.jpg");
+        Image image = new Image("file:///C:\\Users\\ProgramIT\\IdeaProjects\\ProgramIT\\SXurenregistratie\\src\\main\\resources\\IMG_3241.jpg");
         ImageView imageSX = new ImageView();
         imageSX.setImage(image);
         imageSX.setPreserveRatio(true);

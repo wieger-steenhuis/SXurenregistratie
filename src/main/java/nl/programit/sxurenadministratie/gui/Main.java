@@ -20,7 +20,7 @@ public class Main extends Application {
         window = primaryStage;
 
         window.setTitle("ProgramIT - SX_Sport");
-        window.getIcons().add(new Image("logoSX.png")); //logo SX Sports als pictogram in de taakbalk en linksboven in 'window'
+        window.getIcons().add(new Image("file:///C:\\Users\\ProgramIT\\IdeaProjects\\ProgramIT\\SXurenregistratie\\src\\main\\resources\\logoSX.png")); //logo SX Sports als pictogram in de taakbalk en linksboven in 'window'
         window.setScene(LoginScene.getLoginScene(window));
         window.setMaximized(true);
         window.show();
